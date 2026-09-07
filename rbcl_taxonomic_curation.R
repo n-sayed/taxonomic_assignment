@@ -4,31 +4,31 @@ library(tidyr) # used to tidy data
 library(stringr) # string/text processing
 library(purrr) # functional programming e.g. map
 library(rgbif) # access the GBIF database from R
-library(jsonlite) # access NBN Atlas lookup
+library(jsonlite)
 
 # =============================================================================
 # Semi-automated rbcL taxonomic curation
 # =============================================================================
 # Uses:
 #   1. LULU x BASTA merged CSV
-#   2. Eight-column BLAST results (if you have more columns than this, then you may need to tweak the script)
+#   2. Eight-column BLAST results
 #   3. GBIF occurrence and taxonomy information through rgbif
 #   4. Preferred British common names from the NBN Atlas / UKSI
 #
-# The original merged-table columns are preserved in the LULU x BASTA merged CSV. The additonal curation
+# The original merged-table columns are preserved. The requested curation
 # columns are appended in the exact order defined near the end of this script.
 # =============================================================================
 
 # ------------------------------ 1. USER SETTINGS ------------------------------
 
 # These paths allow the script to be opened in RStudio and run with Source.
-lulu_basta_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_lulu98_bastai98l360_merge_test.csv". # REQUIRED: provide the path to your LULU x BASTA merge CSV file
-blast_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_combined_results_test.txt"                # REQUIRED: provide the path to your combined BLAST results txt file
-basta_vout_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_bastai98l360m1p70_vout.txt"          # REQUIRED: provide the path to your BASTA .vout file
-output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation.csv"              # REQUIRED: provide the path to where you want to save your semi-automated curation results. Edit the file name as you wish.
-gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache.csv"                  # REQUIRED: provide the path to where you want to save your cache files. Edit the file name as you wish.
+lulu_basta_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_lulu98_bastai98l360_merge_test.csv"
+blast_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_combined_results_test.txt"
+basta_vout_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_bastai98l360m1p70_vout.txt"
+output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation.csv"
+gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache.csv"
 
-# Optional command-line override: (NOTE: Since we usually use Myriad that uses .sh files, we can avoid using this so ignore it.)
+# Optional command-line override:
 # Rscript rbcl_taxonomic_curation.R \
 #   basta.vout blast.tsv lulu_x_basta.csv curated.csv gbif_cache.csv
 # If no arguments are supplied, the USER SETTINGS paths above are used.
@@ -47,7 +47,7 @@ if (length(args) == 5L) {
   )
 }
 
-# A richer private cache (internal) is retained beside the requested, compact cache. It
+# A richer private cache is retained beside the requested, compact cache. It
 # avoids repeating GBIF taxonomy and occurrence calls on subsequent runs.
 gbif_internal_cache_file <- sub(
   "([.]csv)?$", "_internal.csv", gbif_cache_file, ignore.case = TRUE
@@ -56,12 +56,10 @@ nbn_common_name_cache_file <- sub(
   "([.]csv)?$", "_nbn_common_names.csv", output_file, ignore.case = TRUE
 )
 
-country_code <- "GB" # REQUIRED: change this to whatever country you want to choose (for more codes: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#:~:text=edit-,Decoding%20table,-edit)
-minimum_identity <- 98  # REQUIRED: # change this to the minimum BLAST percentage identity required for a hit to be considered reliable. Example: 98 means at least 98% of aligned bases must match the reference.
-minimum_alignment_length <- 400  # REQUIRED: change this to the minimum BLAST alignment length in base pairs required for a hit to be used. Example: an alignment of 390 bp is excluded, even if its identity is 100%.
-minimum_gbif_records <- 100  # REQUIRED: change this to the minimum number of present observation records in the selected country required for a candidate species to pass the GBIF geographic filter. 
-# This uses human, machine and general observations, but not museum/specimen records.
-
+country_code <- "GB"
+minimum_identity <- 98
+minimum_alignment_length <- 400
+minimum_gbif_records <- 100
 
 # Control columns are detected from their sample names. Edit these expressions
 # if another primer run uses different naming conventions. Matching is case
@@ -69,8 +67,7 @@ minimum_gbif_records <- 100  # REQUIRED: change this to the minimum number of pr
 # `notes`, but control presence does not automatically change the taxonomy.
 positive_control_pattern <- "(^|[_-])(pos|positive|posctrl|positivectrl)([_-]|$)"
 negative_control_pattern <- "(pcrneg|negative|negctrl|negativectrl|ntc|blank)"
-control_detection_minimum <- 1        # OPTIONAL: Increase this if you do not want extremely small control detections reported. This only controls reporting. it does not alter taxonomy.
-# The script prints which control columns it detected, so these should be checked in the .out file after every new dataset.
+control_detection_minimum <- 1
 
 # Exact ties are used by default. Increase only if near-ties should be included.
 best_pident_tolerance <- 0
@@ -212,13 +209,16 @@ noninformative_pattern <- paste(
   collapse = "|"
 )
 
-is_informative_species <- function(species, title) {
+# Judge informativeness from the extracted taxonomic label only. Descriptive
+# words later in a valid GenBank title (for example clone, isolate, voucher or
+# environmental sample) must not cause a named species to be discarded.
+is_informative_species <- function(species) {
   !is.na(species) &
     grepl(
       "^[A-Z][a-z][A-Za-z.-]*(?:[[:space:]]+(?:x|×))?[[:space:]]+[a-z][A-Za-z.-]+$",
       species, perl = TRUE
     ) &
-    !grepl(noninformative_pattern, title, ignore.case = TRUE, perl = TRUE)
+    !grepl(noninformative_pattern, species, ignore.case = TRUE, perl = TRUE)
 }
 
 genus_from_species <- function(species) {
@@ -306,7 +306,7 @@ blast <- blast %>%
     evalue = suppressWarnings(as.numeric(evalue)),
     display_label = extract_display_label(stitle),
     blast_species = extract_species(stitle),
-    informative = is_informative_species(blast_species, stitle),
+    informative = is_informative_species(blast_species),
     blast_genus = if_else(informative, genus_from_species(blast_species), NA_character_)
   )
 
@@ -461,6 +461,15 @@ empty_gbif_cache <- tibble(
   order = character(), family = character(), genus = character(),
   species = character(),
   gbif_records = integer(),
+  occurrences_GB_human_observation = integer(),
+  occurrences_GB_machine_observation = integer(),
+  occurrences_GB_observation = integer(),
+  occurrences_GB_preserved_specimen = integer(),
+  occurrences_GB_living_specimen = integer(),
+  occurrences_GB_fossil_specimen = integer(),
+  occurrences_GB_material_citation = integer(),
+  occurrences_GB_material_sample = integer(),
+  occurrences_GB_occurrence = integer(),
   occurrences_GB_observations = integer(),
   occurrences_GB_specimens = integer(),
   occurrences_GB_all = integer(),
@@ -489,16 +498,12 @@ if (file.exists(gbif_internal_cache_file)) {
     }
   }
   gbif_cache <- as_tibble(gbif_cache[, names(empty_gbif_cache), drop = FALSE])
-  gbif_cache$gbif_records <- suppressWarnings(as.integer(gbif_cache$gbif_records))
-  gbif_cache$occurrences_GB_observations <- suppressWarnings(
-    as.integer(gbif_cache$occurrences_GB_observations)
-  )
-  gbif_cache$occurrences_GB_specimens <- suppressWarnings(
-    as.integer(gbif_cache$occurrences_GB_specimens)
-  )
-  gbif_cache$occurrences_GB_all <- suppressWarnings(
-    as.integer(gbif_cache$occurrences_GB_all)
-  )
+  gbif_integer_columns <- names(empty_gbif_cache)[
+    vapply(empty_gbif_cache, is.integer, logical(1))
+  ]
+  for (column in gbif_integer_columns) {
+    gbif_cache[[column]] <- suppressWarnings(as.integer(gbif_cache[[column]]))
+  }
 } else {
   gbif_cache <- empty_gbif_cache
 }
@@ -526,6 +531,15 @@ check_gbif <- function(species_name) {
     common_name = NA_character_, kingdom = NA_character_, phylum = NA_character_,
     class = NA_character_, order = NA_character_, family = NA_character_,
     genus = NA_character_, species = NA_character_, gbif_records = NA_integer_,
+    occurrences_GB_human_observation = NA_integer_,
+    occurrences_GB_machine_observation = NA_integer_,
+    occurrences_GB_observation = NA_integer_,
+    occurrences_GB_preserved_specimen = NA_integer_,
+    occurrences_GB_living_specimen = NA_integer_,
+    occurrences_GB_fossil_specimen = NA_integer_,
+    occurrences_GB_material_citation = NA_integer_,
+    occurrences_GB_material_sample = NA_integer_,
+    occurrences_GB_occurrence = NA_integer_,
     occurrences_GB_observations = NA_integer_,
     occurrences_GB_specimens = NA_integer_,
     occurrences_GB_all = NA_integer_,
@@ -576,27 +590,48 @@ check_gbif <- function(species_name) {
       taxonKey = as.integer(key),
       country = country_code
     ))
-    observations <- as.numeric(rgbif::occ_count(
+    # Retrieve every basisOfRecord count in one faceted query. This provides the
+    # detailed internal audit columns without sending one request per category.
+    basis_levels <- c(
+      "HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "OBSERVATION",
+      "PRESERVED_SPECIMEN", "LIVING_SPECIMEN", "FOSSIL_SPECIMEN",
+      "MATERIAL_CITATION", "MATERIAL_SAMPLE", "OCCURRENCE"
+    )
+    basis_counts <- setNames(rep(0L, length(basis_levels)), basis_levels)
+    basis_result <- rgbif::occ_search(
       taxonKey = as.integer(key),
       country = country_code,
-      basisOfRecord = paste(
-        c("HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "OBSERVATION"),
-        collapse = ";"
-      ),
-      occurrenceStatus = "PRESENT"
-    ))
-    specimens <- as.numeric(rgbif::occ_count(
-      taxonKey = as.integer(key),
-      country = country_code,
-      basisOfRecord = paste(
-        c(
-          "PRESERVED_SPECIMEN", "LIVING_SPECIMEN", "FOSSIL_SPECIMEN",
-          "MATERIAL_CITATION", "MATERIAL_SAMPLE"
-        ),
-        collapse = ";"
-      ),
-      occurrenceStatus = "PRESENT"
-    ))
+      occurrenceStatus = "PRESENT",
+      facet = "basisOfRecord",
+      facetLimit = 100,
+      limit = 0
+    )
+    basis_facet <- basis_result$facets$basisOfRecord
+    if (!is.null(basis_facet) && nrow(basis_facet)) {
+      facet_names <- toupper(as.character(basis_facet$name))
+      facet_counts <- suppressWarnings(as.integer(basis_facet$count))
+      matched <- match(facet_names, names(basis_counts))
+      usable <- !is.na(matched) & !is.na(facet_counts)
+      basis_counts[matched[usable]] <- facet_counts[usable]
+    }
+
+    base$occurrences_GB_human_observation <- basis_counts["HUMAN_OBSERVATION"]
+    base$occurrences_GB_machine_observation <- basis_counts["MACHINE_OBSERVATION"]
+    base$occurrences_GB_observation <- basis_counts["OBSERVATION"]
+    base$occurrences_GB_preserved_specimen <- basis_counts["PRESERVED_SPECIMEN"]
+    base$occurrences_GB_living_specimen <- basis_counts["LIVING_SPECIMEN"]
+    base$occurrences_GB_fossil_specimen <- basis_counts["FOSSIL_SPECIMEN"]
+    base$occurrences_GB_material_citation <- basis_counts["MATERIAL_CITATION"]
+    base$occurrences_GB_material_sample <- basis_counts["MATERIAL_SAMPLE"]
+    base$occurrences_GB_occurrence <- basis_counts["OCCURRENCE"]
+
+    observations <- sum(basis_counts[c(
+      "HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "OBSERVATION"
+    )])
+    specimens <- sum(basis_counts[c(
+      "PRESERVED_SPECIMEN", "LIVING_SPECIMEN", "FOSSIL_SPECIMEN",
+      "MATERIAL_CITATION", "MATERIAL_SAMPLE"
+    )])
     base$gbif_records <- as.integer(total)
     base$occurrences_GB_observations <- as.integer(observations)
     base$occurrences_GB_specimens <- as.integer(specimens)
@@ -620,11 +655,27 @@ species_to_check <- species_to_check[!is.na(species_to_check)]
 # A cached row is reusable only when the occurrence query completed. Earlier
 # versions used an incorrect rgbif argument, so rows with NA counts or a stored
 # error must be queried again rather than silently treated as British absences.
+gbif_basis_count_columns <- c(
+  "occurrences_GB_human_observation",
+  "occurrences_GB_machine_observation",
+  "occurrences_GB_observation",
+  "occurrences_GB_preserved_specimen",
+  "occurrences_GB_living_specimen",
+  "occurrences_GB_fossil_specimen",
+  "occurrences_GB_material_citation",
+  "occurrences_GB_material_sample",
+  "occurrences_GB_occurrence"
+)
+has_complete_basis_counts <- rowSums(is.na(
+  gbif_cache[, gbif_basis_count_columns, drop = FALSE]
+)) == 0
+
 valid_cached_names <- gbif_cache$queried_name[
   !is.na(gbif_cache$gbif_records) &
     !is.na(gbif_cache$occurrences_GB_observations) &
     !is.na(gbif_cache$occurrences_GB_specimens) &
     !is.na(gbif_cache$occurrences_GB_all) &
+    has_complete_basis_counts &
     (is.na(gbif_cache$query_error) | !nzchar(gbif_cache$query_error))
 ]
 missing_from_cache <- setdiff(species_to_check, valid_cached_names)
