@@ -23,11 +23,11 @@ library(rgbif) # access the GBIF database from R
 lulu_basta_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_lulu98_bastai98l360_merge_test.csv"
 blast_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_combined_results_test.txt"
 basta_vout_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_bastai98l360m1p70_vout.txt"
-output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation_v5.csv"
-gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache_v5.csv"
+output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation_v5a.csv"
+gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache_v5a.csv"
 
 # Optional command-line override:
-# Rscript rbcl_taxonomic_curation_v5.R \
+# Rscript rbcl_taxonomic_curation_v5a.R \
 #   basta.vout blast.tsv lulu_x_basta.csv curated.csv gbif_cache.csv
 # If no arguments are supplied, the USER SETTINGS paths above are used.
 args <- commandArgs(trailingOnly = TRUE)
@@ -63,16 +63,6 @@ best_alignment_tolerance <- 0
 # Set FALSE to test the rest of the script without contacting GBIF.
 query_gbif <- TRUE
 gbif_pause_seconds <- 0.1
-
-# Count only observation/occurrence evidence. Museum, preserved, fossil, and
-# living specimens are deliberately excluded.
-allowed_basis_of_record <- c(
-  "HUMAN_OBSERVATION",
-  "MACHINE_OBSERVATION",
-  "OBSERVATION",
-  "OCCURRENCE",
-  "MATERIAL_SAMPLE"
-)
 
 taxonomy_ranks <- c(
   "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"
@@ -470,17 +460,13 @@ check_gbif <- function(species_name) {
     }
     base$common_name <- get_common_name(key)
 
-    counts <- vapply(allowed_basis_of_record, function(record_type) {
-      occurrence <- rgbif::occ_search(
-        taxon_key = as.integer(key),
-        country = country_code,
-        basis_of_record = record_type,
-        limit = 0
-      )
-      as.numeric(occurrence$meta$count %||% 0)
-    }, numeric(1))
-
-    total <- sum(counts, na.rm = TRUE)
+    # Use the complete GBIF country count so occurrences_GB matches the count
+    # displayed by a normal GBIF taxon/country query. The value is evidence of
+    # records, not proof of native or established status.
+    total <- as.numeric(rgbif::occ_count(
+      taxonKey = as.integer(key),
+      country = country_code
+    ))
     base$gbif_records <- as.integer(total)
     base$gbif_record_status <- case_when(
       total >= minimum_gbif_records ~ "Above threshold",
@@ -497,9 +483,20 @@ check_gbif <- function(species_name) {
 
 species_to_check <- sort(unique(top_hits$blast_species[top_hits$informative]))
 species_to_check <- species_to_check[!is.na(species_to_check)]
-missing_from_cache <- setdiff(species_to_check, gbif_cache$queried_name)
+
+# A cached row is reusable only when the occurrence query completed. Earlier
+# versions used an incorrect rgbif argument, so rows with NA counts or a stored
+# error must be queried again rather than silently treated as British absences.
+valid_cached_names <- gbif_cache$queried_name[
+  !is.na(gbif_cache$gbif_records) &
+    (is.na(gbif_cache$query_error) | !nzchar(gbif_cache$query_error))
+]
+missing_from_cache <- setdiff(species_to_check, valid_cached_names)
 
 if (length(missing_from_cache)) {
+  gbif_cache <- gbif_cache %>%
+    filter(!queried_name %in% missing_from_cache)
+
   new_gbif <- map_dfr(seq_along(missing_from_cache), function(i) {
     message("[", i, "/", length(missing_from_cache), "]")
     result <- check_gbif(missing_from_cache[i])
@@ -651,12 +648,23 @@ curate_row <- function(i) {
       id, "Species", informative_species[1]
     )
 
+    # Missing lower ranks are not conflicts. A clean species upgrade is allowed
+    # when the vout contains that species and any already-assigned genus/species
+    # agrees. Only an explicitly different assigned taxon is a conflict.
+    assigned_species_conflict <- !is.na(basta_values["Species"]) &&
+      tolower(basta_values["Species"]) != tolower(informative_species[1])
+    assigned_genus_conflict <- !is.na(basta_values["Genus"]) &&
+      tolower(basta_values["Genus"]) !=
+        tolower(genus_from_species(informative_species[1]))
+
     # GBIF zero/low support is descriptive only and never triggers review.
-    manual <- !species_agrees || !vout_species_support
+    manual <- assigned_species_conflict || assigned_genus_conflict ||
+      !vout_species_support
     reason <- if (species_agrees && vout_species_support) {
       "Retained species because all informative top BLAST hits support one species, the merged LULU x BASTA assignment agrees, and the species is represented in the BASTA vout. GBIF support is reported descriptively only."
-    } else if (genus_agrees && vout_species_support) {
-      "BLAST and the BASTA vout support one species, but the merged LULU x BASTA table stopped at genus; flagged the possible species upgrade for review. GBIF support is descriptive only."
+    } else if (!assigned_species_conflict && !assigned_genus_conflict &&
+               vout_species_support) {
+      "Upgraded to species because the credible optimal BLAST hits support one species, that species occurs in the BASTA vout, and no assigned BASTA rank conflicts with its lineage. GBIF support is reported descriptively only."
     } else if (!vout_species_support) {
       "BLAST supports one species, but that species is not represented in the parsed BASTA vout evidence; retained the molecular proposal and flagged the discrepancy for review. GBIF support is descriptive only."
     } else {
