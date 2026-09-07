@@ -23,11 +23,11 @@ library(rgbif) # access the GBIF database from R
 lulu_basta_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_lulu98_bastai98l360_merge_test.csv"
 blast_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_combined_results_test.txt"
 basta_vout_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_bastai98l360m1p70_vout.txt"
-output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation_v5a.csv"
-gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache_v5a.csv"
+output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation.csv"
+gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache.csv"
 
 # Optional command-line override:
-# Rscript rbcl_taxonomic_curation_v5a.R \
+# Rscript rbcl_taxonomic_curation.R \
 #   basta.vout blast.tsv lulu_x_basta.csv curated.csv gbif_cache.csv
 # If no arguments are supplied, the USER SETTINGS paths above are used.
 args <- commandArgs(trailingOnly = TRUE)
@@ -108,6 +108,17 @@ collapse_or_none <- function(x, none = "None") {
   x <- sort(unique(as_clean_text(x)))
   x <- x[!is.na(x)]
   if (!length(x)) none else paste(x, collapse = "; ")
+}
+
+# Convert genuinely empty character cells to NA before writing output files.
+# This does not change meaningful labels such as "unknown" or "None".
+blank_cells_to_na <- function(df) {
+  character_columns <- vapply(df, is.character, logical(1))
+  df[character_columns] <- lapply(df[character_columns], function(x) {
+    x[!is.na(x) & trimws(x) == ""] <- NA_character_
+    x
+  })
+  df
 }
 
 format_counts <- function(labels) {
@@ -373,6 +384,9 @@ empty_gbif_cache <- tibble(
   order = character(), family = character(), genus = character(),
   species = character(),
   gbif_records = integer(),
+  occurrences_GB_observations = integer(),
+  occurrences_GB_specimens = integer(),
+  occurrences_GB_all = integer(),
   gbif_record_status = character(),
   query_error = character(),
   query_date = character()
@@ -386,13 +400,28 @@ if (file.exists(gbif_internal_cache_file)) {
   )
   missing_cache_columns <- setdiff(names(empty_gbif_cache), names(gbif_cache))
   if (length(missing_cache_columns)) {
-    stop(
-      "Existing GBIF cache has an incompatible structure. Use a new cache ",
-      "filename. Missing: ", paste(missing_cache_columns, collapse = ", ")
-    )
+    # Migrate older caches by adding newly introduced columns. Rows missing the
+    # new occurrence counts are automatically refreshed below.
+    for (column in missing_cache_columns) {
+      prototype <- empty_gbif_cache[[column]]
+      gbif_cache[[column]] <- if (is.integer(prototype)) {
+        NA_integer_
+      } else {
+        NA_character_
+      }
+    }
   }
   gbif_cache <- as_tibble(gbif_cache[, names(empty_gbif_cache), drop = FALSE])
   gbif_cache$gbif_records <- suppressWarnings(as.integer(gbif_cache$gbif_records))
+  gbif_cache$occurrences_GB_observations <- suppressWarnings(
+    as.integer(gbif_cache$occurrences_GB_observations)
+  )
+  gbif_cache$occurrences_GB_specimens <- suppressWarnings(
+    as.integer(gbif_cache$occurrences_GB_specimens)
+  )
+  gbif_cache$occurrences_GB_all <- suppressWarnings(
+    as.integer(gbif_cache$occurrences_GB_all)
+  )
 } else {
   gbif_cache <- empty_gbif_cache
 }
@@ -420,6 +449,9 @@ check_gbif <- function(species_name) {
     common_name = NA_character_, kingdom = NA_character_, phylum = NA_character_,
     class = NA_character_, order = NA_character_, family = NA_character_,
     genus = NA_character_, species = NA_character_, gbif_records = NA_integer_,
+    occurrences_GB_observations = NA_integer_,
+    occurrences_GB_specimens = NA_integer_,
+    occurrences_GB_all = NA_integer_,
     gbif_record_status = "Query uncertain", query_error = NA_character_,
     query_date = as.character(Sys.Date())
   )
@@ -467,7 +499,31 @@ check_gbif <- function(species_name) {
       taxonKey = as.integer(key),
       country = country_code
     ))
+    observations <- as.numeric(rgbif::occ_count(
+      taxonKey = as.integer(key),
+      country = country_code,
+      basisOfRecord = paste(
+        c("HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "OBSERVATION"),
+        collapse = ";"
+      ),
+      occurrenceStatus = "PRESENT"
+    ))
+    specimens <- as.numeric(rgbif::occ_count(
+      taxonKey = as.integer(key),
+      country = country_code,
+      basisOfRecord = paste(
+        c(
+          "PRESERVED_SPECIMEN", "LIVING_SPECIMEN", "FOSSIL_SPECIMEN",
+          "MATERIAL_CITATION", "MATERIAL_SAMPLE"
+        ),
+        collapse = ";"
+      ),
+      occurrenceStatus = "PRESENT"
+    ))
     base$gbif_records <- as.integer(total)
+    base$occurrences_GB_observations <- as.integer(observations)
+    base$occurrences_GB_specimens <- as.integer(specimens)
+    base$occurrences_GB_all <- as.integer(total)
     base$gbif_record_status <- case_when(
       total >= minimum_gbif_records ~ "Above threshold",
       total > 0 ~ "Below threshold",
@@ -489,6 +545,9 @@ species_to_check <- species_to_check[!is.na(species_to_check)]
 # error must be queried again rather than silently treated as British absences.
 valid_cached_names <- gbif_cache$queried_name[
   !is.na(gbif_cache$gbif_records) &
+    !is.na(gbif_cache$occurrences_GB_observations) &
+    !is.na(gbif_cache$occurrences_GB_specimens) &
+    !is.na(gbif_cache$occurrences_GB_all) &
     (is.na(gbif_cache$query_error) | !nzchar(gbif_cache$query_error))
 ]
 missing_from_cache <- setdiff(species_to_check, valid_cached_names)
@@ -507,7 +566,8 @@ if (length(missing_from_cache)) {
     distinct(queried_name, .keep_all = TRUE)
 }
 
-write.csv(gbif_cache, gbif_internal_cache_file, row.names = FALSE, na = "")
+gbif_cache <- blank_cells_to_na(gbif_cache)
+write.csv(gbif_cache, gbif_internal_cache_file, row.names = FALSE, na = "NA")
 
 # ------------------------------ 8. GBIF SUMMARY -------------------------------
 
@@ -519,8 +579,8 @@ top_informative_gbif <- top_hits %>%
 # Write the compact, ASV-specific GBIF evidence table requested for manual
 # auditing. `support` is the BASTA vout support attached to that exact species;
 # it is not treated as an independent BLAST vote. `present_GB` means at least
-# one qualifying GBIF occurrence, while the stricter threshold used in the
-# automated summary remains configurable through minimum_gbif_records.
+# one GBIF record of any type, while the main automated summary applies
+# minimum_gbif_records to observation records only.
 support_for_species <- function(id, taxon) {
   rows <- basta_vout[basta_vout$seqid == as.character(id), , drop = FALSE]
   if (!nrow(rows)) return(0L)
@@ -541,19 +601,24 @@ gbif_cache_output <- top_informative_gbif %>%
   ) %>%
   arrange(suppressWarnings(as.numeric(seqid)), seqid, species)
 
-write.csv(gbif_cache_output, gbif_cache_file, row.names = FALSE, na = "")
+gbif_cache_output <- blank_cells_to_na(gbif_cache_output)
+write.csv(gbif_cache_output, gbif_cache_file, row.names = FALSE, na = "NA")
 
 gbif_summary <- top_informative_gbif %>%
   group_by(seqid) %>%
   summarise(
     number_species_checked = n_distinct(blast_species[!is.na(blast_species)]),
     number_species_present = n_distinct(
-      blast_species[!is.na(gbif_records) & gbif_records >= minimum_gbif_records]
+      blast_species[
+        !is.na(occurrences_GB_observations) &
+          occurrences_GB_observations >= minimum_gbif_records
+      ]
     ),
     gbif_present_species = {
-      keep <- !is.na(gbif_records) & gbif_records >= minimum_gbif_records
+      keep <- !is.na(occurrences_GB_observations) &
+        occurrences_GB_observations >= minimum_gbif_records
       if (!any(keep)) "None" else paste0(
-        blast_species[keep], " (", gbif_records[keep], ")",
+        blast_species[keep], " (", occurrences_GB_observations[keep], ")",
         collapse = "; "
       )
     },
@@ -675,8 +740,9 @@ curate_row <- function(i) {
     # best molecular matches exceeds the occurrence threshold.
     asv_gbif <- top_informative_gbif[
       top_informative_gbif$seqid == id &
-        !is.na(top_informative_gbif$gbif_records) &
-        top_informative_gbif$gbif_records >= minimum_gbif_records,
+        !is.na(top_informative_gbif$occurrences_GB_observations) &
+        top_informative_gbif$occurrences_GB_observations >=
+          minimum_gbif_records,
       , drop = FALSE
     ]
     preferred_species <- unique(asv_gbif$blast_species)
@@ -713,13 +779,13 @@ curate_row <- function(i) {
           "Several species had equally best BLAST scores, but only ",
           preferred_species, " exceeded the GBIF threshold of ",
           minimum_gbif_records,
-          " qualifying GB records. The merged BASTA lineage and BASTA vout ",
+          " GB observation records. The merged BASTA lineage and BASTA vout ",
           "also support this taxon, so GBIF was used as a geographic tie-breaker."
         )
       } else {
         paste0(
           "Several species had equally best BLAST scores and only ",
-          preferred_species, " exceeded the GBIF threshold. It was selected as ",
+          preferred_species, " exceeded the GB observation threshold. It was selected as ",
           "the geographic preference, but the merged BASTA lineage or BASTA vout ",
           "does not support it consistently, so manual review is required."
         )
@@ -813,11 +879,14 @@ curate_row <- function(i) {
     "No informative species was available for a GBIF check."
   } else if ((row$number_species_present %||% 0L) == 0L) {
     paste0(
-      "No candidate reached the configured GB occurrence threshold of ",
+      "No candidate reached the configured GB observation threshold of ",
       minimum_gbif_records, "; inspect the GBIF cache before geographic filtering."
     )
   } else {
-    paste0("GB candidates above threshold: ", row$gbif_present_species, ".")
+    paste0(
+      "GB candidates above the observation threshold: ",
+      row$gbif_present_species, "."
+    )
   }
 
   final_common_name <- NA_character_
@@ -848,10 +917,10 @@ curate_row <- function(i) {
     "Manual geographic/ecological review required"
   }
 
-  curation_colour <- if (grepl(
-    "conflict|no informative|multiple genera|multiple families|conflicting higher",
-    reason, ignore.case = TRUE
-  )) {
+  # Colour is based on structured evidence, not words in the reason text.
+  # This prevents phrases such as "no assigned rank conflicts" from being
+  # incorrectly classified as red merely because they contain "conflict".
+  curation_colour <- if (isTRUE(manual)) {
     "Red"
   } else if (!is.na(basta_rank_index) && !is.na(final_rank_index) &&
              basta_rank_index == final_rank_index) {
@@ -920,7 +989,8 @@ result <- bind_cols(
   decision_rows
 )
 
-write.csv(result, output_file, row.names = FALSE, na = "")
+result <- blank_cells_to_na(result)
+write.csv(result, output_file, row.names = FALSE, na = "NA")
 
 message("Curation complete.")
 message("Output: ", normalizePath(output_file, mustWork = FALSE))
