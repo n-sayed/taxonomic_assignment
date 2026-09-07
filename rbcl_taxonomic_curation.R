@@ -4,31 +4,31 @@ library(tidyr) # used to tidy data
 library(stringr) # string/text processing
 library(purrr) # functional programming e.g. map
 library(rgbif) # access the GBIF database from R
-library(jsonlite)
+library(jsonlite) # access NBN Atlas lookup
 
 # =============================================================================
 # Semi-automated rbcL taxonomic curation
 # =============================================================================
 # Uses:
 #   1. LULU x BASTA merged CSV
-#   2. Eight-column BLAST results
+#   2. Eight-column BLAST results (if you have more columns than this, then you may need to tweak the script)
 #   3. GBIF occurrence and taxonomy information through rgbif
 #   4. Preferred British common names from the NBN Atlas / UKSI
 #
-# The original merged-table columns are preserved. The requested curation
+# The original merged-table columns are preserved in the LULU x BASTA merged CSV. The additonal curation
 # columns are appended in the exact order defined near the end of this script.
 # =============================================================================
 
 # ------------------------------ 1. USER SETTINGS ------------------------------
 
 # These paths allow the script to be opened in RStudio and run with Source.
-lulu_basta_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_lulu98_bastai98l360_merge_test.csv"
-blast_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_combined_results_test.txt"
-basta_vout_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_bastai98l360m1p70_vout.txt"
-output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation.csv"
-gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache.csv"
+lulu_basta_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_lulu98_bastai98l360_merge_test.csv". # REQUIRED: provide the path to your LULU x BASTA merge CSV file
+blast_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_combined_results_test.txt"                # REQUIRED: provide the path to your combined BLAST results txt file
+basta_vout_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_bastai98l360m1p70_vout.txt"          # REQUIRED: provide the path to your BASTA .vout file
+output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation.csv"              # REQUIRED: provide the path to where you want to save your semi-automated curation results. Edit the file name as you wish.
+gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache.csv"                  # REQUIRED: provide the path to where you want to save your cache files. Edit the file name as you wish.
 
-# Optional command-line override:
+# Optional command-line override: (NOTE: Since we usually use Myriad that uses .sh files, we can avoid using this so ignore it.)
 # Rscript rbcl_taxonomic_curation.R \
 #   basta.vout blast.tsv lulu_x_basta.csv curated.csv gbif_cache.csv
 # If no arguments are supplied, the USER SETTINGS paths above are used.
@@ -47,7 +47,7 @@ if (length(args) == 5L) {
   )
 }
 
-# A richer private cache is retained beside the requested, compact cache. It
+# A richer private cache (internal) is retained beside the requested, compact cache. It
 # avoids repeating GBIF taxonomy and occurrence calls on subsequent runs.
 gbif_internal_cache_file <- sub(
   "([.]csv)?$", "_internal.csv", gbif_cache_file, ignore.case = TRUE
@@ -56,10 +56,21 @@ nbn_common_name_cache_file <- sub(
   "([.]csv)?$", "_nbn_common_names.csv", output_file, ignore.case = TRUE
 )
 
-country_code <- "GB"
-minimum_identity <- 98
-minimum_alignment_length <- 400
-minimum_gbif_records <- 100
+country_code <- "GB" # REQUIRED: change this to whatever country you want to choose (for more codes: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#:~:text=edit-,Decoding%20table,-edit)
+minimum_identity <- 98  # REQUIRED: # change this to the minimum BLAST percentage identity required for a hit to be considered reliable. Example: 98 means at least 98% of aligned bases must match the reference.
+minimum_alignment_length <- 400  # REQUIRED: change this to the minimum BLAST alignment length in base pairs required for a hit to be used. Example: an alignment of 390 bp is excluded, even if its identity is 100%.
+minimum_gbif_records <- 100  # REQUIRED: change this to the minimum number of present observation records in the selected country required for a candidate species to pass the GBIF geographic filter. 
+# This uses human, machine and general observations, but not museum/specimen records.
+
+
+# Control columns are detected from their sample names. Edit these expressions
+# if another primer run uses different naming conventions. Matching is case
+# insensitive. A count at or above control_detection_minimum is reported in
+# `notes`, but control presence does not automatically change the taxonomy.
+positive_control_pattern <- "(^|[_-])(pos|positive|posctrl|positivectrl)([_-]|$)"
+negative_control_pattern <- "(pcrneg|negative|negctrl|negativectrl|ntc|blank)"
+control_detection_minimum <- 1        # OPTIONAL: Increase this if you do not want extremely small control detections reported. This only controls reporting. it does not alter taxonomy.
+# The script prints which control columns it detected, so these should be checked in the .out file after every new dataset.
 
 # Exact ties are used by default. Increase only if near-ties should be included.
 best_pident_tolerance <- 0
@@ -136,6 +147,27 @@ format_counts <- function(labels) {
   if (!length(labels)) return("None")
   counts <- sort(table(labels), decreasing = TRUE)
   paste0(names(counts), " (", as.integer(counts), ")", collapse = "; ")
+}
+
+format_control_note <- function(row, columns, label) {
+  if (!length(columns)) return(NA_character_)
+  counts <- suppressWarnings(as.numeric(unlist(row[1, columns, drop = FALSE])))
+  names(counts) <- columns
+  detected <- !is.na(counts) & counts >= control_detection_minimum
+  if (!any(detected)) return(NA_character_)
+  paste0(
+    label, ": ",
+    paste0(names(counts)[detected], "=", counts[detected], collapse = "; ")
+  )
+}
+
+control_notes_for_row <- function(row) {
+  notes <- c(
+    format_control_note(row, positive_control_columns, "Positive-control detection"),
+    format_control_note(row, negative_control_columns, "Negative-control detection")
+  )
+  notes <- notes[!is.na(notes)]
+  if (!length(notes)) NA_character_ else paste(notes, collapse = " | ")
 }
 
 rank_index <- function(x) match(tolower(x), tolower(taxonomy_ranks))
@@ -217,6 +249,30 @@ if (length(missing_merged)) {
 }
 merged$seqid <- as.character(merged$seqid)
 original_columns <- names(merged)
+
+positive_control_columns <- names(merged)[grepl(
+  positive_control_pattern, names(merged), ignore.case = TRUE, perl = TRUE
+)]
+negative_control_columns <- names(merged)[grepl(
+  negative_control_pattern, names(merged), ignore.case = TRUE, perl = TRUE
+)]
+
+message(
+  "Positive-control columns detected: ",
+  if (length(positive_control_columns)) {
+    paste(positive_control_columns, collapse = ", ")
+  } else {
+    "none"
+  }
+)
+message(
+  "Negative-control columns detected: ",
+  if (length(negative_control_columns)) {
+    paste(negative_control_columns, collapse = ", ")
+  } else {
+    "none"
+  }
+)
 
 # ------------------------------ 4. READ BLAST ---------------------------------
 
@@ -998,11 +1054,9 @@ curate_row <- function(i) {
     "Yellow"
   }
 
-  notes <- if (manual) {
-    "Automated proposal requires manual confirmation; do not use BLAST row order or duplicate reference counts to break exact ties."
-  } else {
-    "Automated conservative assignment; GBIF occurrence is supporting context rather than molecular evidence."
-  }
+  # Keep notes distinct from manual_review and curation_reason: report only
+  # sample-control detections that are useful during laboratory QC.
+  notes <- control_notes_for_row(row)
 
   tibble(
     BASTA_rank = basta_rank,
