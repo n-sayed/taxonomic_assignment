@@ -4,6 +4,7 @@ library(tidyr) # used to tidy data
 library(stringr) # string/text processing
 library(purrr) # functional programming e.g. map
 library(rgbif) # access the GBIF database from R
+library(jsonlite)
 
 # =============================================================================
 # Semi-automated rbcL taxonomic curation
@@ -12,6 +13,7 @@ library(rgbif) # access the GBIF database from R
 #   1. LULU x BASTA merged CSV
 #   2. Eight-column BLAST results
 #   3. GBIF occurrence and taxonomy information through rgbif
+#   4. Preferred British common names from the NBN Atlas / UKSI
 #
 # The original merged-table columns are preserved. The requested curation
 # columns are appended in the exact order defined near the end of this script.
@@ -23,11 +25,11 @@ library(rgbif) # access the GBIF database from R
 lulu_basta_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_lulu98_bastai98l360_merge_test.csv"
 blast_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_combined_results_test.txt"
 basta_vout_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_bastai98l360m1p70_vout.txt"
-output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation.csv"
-gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache.csv"
+output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation_v5.csv"
+gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache_v5.csv"
 
 # Optional command-line override:
-# Rscript rbcl_taxonomic_curation.R \
+# Rscript rbcl_taxonomic_curation_v5.R \
 #   basta.vout blast.tsv lulu_x_basta.csv curated.csv gbif_cache.csv
 # If no arguments are supplied, the USER SETTINGS paths above are used.
 args <- commandArgs(trailingOnly = TRUE)
@@ -50,6 +52,9 @@ if (length(args) == 5L) {
 gbif_internal_cache_file <- sub(
   "([.]csv)?$", "_internal.csv", gbif_cache_file, ignore.case = TRUE
 )
+nbn_common_name_cache_file <- sub(
+  "([.]csv)?$", "_nbn_common_names.csv", output_file, ignore.case = TRUE
+)
 
 country_code <- "GB"
 minimum_identity <- 98
@@ -64,11 +69,15 @@ best_alignment_tolerance <- 0
 query_gbif <- TRUE
 gbif_pause_seconds <- 0.1
 
+# Set FALSE to reuse an existing NBN cache without making new API requests.
+query_nbn <- TRUE
+nbn_pause_seconds <- 0.1
+
 taxonomy_ranks <- c(
   "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"
 )
 
-required_packages <- c("dplyr", "stringr", "purrr", "rgbif")
+required_packages <- c("dplyr", "stringr", "purrr", "rgbif", "jsonlite")
 missing_packages <- required_packages[
   !vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)
 ]
@@ -1009,9 +1018,7 @@ curate_row <- function(i) {
     final_family = final["Family"],
     final_genus = final["Genus"],
     final_species = final["Species"],
-    automated_final_rank = automated_rank,
     final_taxon = final_taxon,
-    final_decision = final_taxon,
     final_rank = automated_rank,
     common_name = final_common_name,
     hit_consensus = hit_consensus,
@@ -1029,7 +1036,167 @@ curate_row <- function(i) {
 message("Curating ", nrow(evidence), " ASVs...")
 decision_rows <- map_dfr(seq_len(nrow(evidence)), curate_row)
 
-# ------------------------------ 11. ORDER AND SAVE ----------------------------
+# ----------------------- 11. NBN BRITISH COMMON NAMES ------------------------
+
+# The NBN Atlas species dictionary is based on the UK Species Inventory (UKSI).
+# commonNameSingle is its preferred common name. These names are descriptive
+# output only and never influence the taxonomic curation decision.
+empty_nbn_cache <- tibble(
+  queried_taxon = character(),
+  queried_rank = character(),
+  nbn_scientific_name = character(),
+  nbn_rank = character(),
+  nbn_guid = character(),
+  british_common_name = character(),
+  nbn_taxonomic_status = character(),
+  nbn_match_status = character(),
+  query_error = character(),
+  query_date = character()
+)
+
+if (file.exists(nbn_common_name_cache_file)) {
+  nbn_cache <- read.csv(
+    nbn_common_name_cache_file,
+    stringsAsFactors = FALSE,
+    check.names = FALSE,
+    na.strings = c("NA", "")
+  )
+  missing_nbn_columns <- setdiff(names(empty_nbn_cache), names(nbn_cache))
+  for (column in missing_nbn_columns) nbn_cache[[column]] <- NA_character_
+  nbn_cache <- as_tibble(nbn_cache[, names(empty_nbn_cache), drop = FALSE])
+} else {
+  nbn_cache <- empty_nbn_cache
+}
+
+check_nbn_common_name <- function(taxon, rank) {
+  message("Checking NBN common name: ", taxon, " [", rank, "]")
+
+  base <- tibble(
+    queried_taxon = taxon,
+    queried_rank = rank,
+    nbn_scientific_name = NA_character_,
+    nbn_rank = NA_character_,
+    nbn_guid = NA_character_,
+    british_common_name = NA_character_,
+    nbn_taxonomic_status = NA_character_,
+    nbn_match_status = "No exact accepted match",
+    query_error = NA_character_,
+    query_date = as.character(Sys.Date())
+  )
+
+  if (!query_nbn) {
+    base$query_error <- "NBN querying disabled"
+    return(base)
+  }
+
+  tryCatch({
+    encoded_taxon <- utils::URLencode(taxon, reserved = TRUE)
+    encoded_rank <- utils::URLencode(tolower(rank), reserved = TRUE)
+    url <- paste0(
+      "https://species-ws.nbnatlas.org/search?",
+      "q=%2A%3A%2A",
+      "&fq=idxtype%3ATAXON",
+      "&fq=scientificName%3A%22", encoded_taxon, "%22",
+      "&fq=rank%3A%22", encoded_rank, "%22",
+      "&pageSize=20"
+    )
+
+    response <- jsonlite::fromJSON(url, simplifyDataFrame = TRUE)
+    matches <- response$searchResults$results
+    if (is.null(matches) || !is.data.frame(matches) || !nrow(matches)) {
+      return(base)
+    }
+
+    exact <- matches[
+      !is.na(matches$scientificName) &
+        tolower(trimws(matches$scientificName)) == tolower(trimws(taxon)) &
+        !is.na(matches$rank) &
+        tolower(matches$rank) == tolower(rank) &
+        !is.na(matches$taxonomicStatus) &
+        tolower(matches$taxonomicStatus) == "accepted",
+      , drop = FALSE
+    ]
+    if (!nrow(exact)) return(base)
+
+    match <- exact[1, , drop = FALSE]
+    preferred_name <- as_clean_text(match$commonNameSingle %||% NA_character_)
+
+    base$nbn_scientific_name <- as.character(match$scientificName[1] %||% NA_character_)
+    base$nbn_rank <- as.character(match$rank[1] %||% NA_character_)
+    base$nbn_guid <- as.character(match$guid[1] %||% NA_character_)
+    base$british_common_name <- preferred_name[1] %||% NA_character_
+    base$nbn_taxonomic_status <- as.character(
+      match$taxonomicStatus[1] %||% NA_character_
+    )
+    base$nbn_match_status <- if (is.na(base$british_common_name)) {
+      "Exact accepted taxon; no preferred common name"
+    } else {
+      "Exact accepted taxon with preferred common name"
+    }
+    base
+  }, error = function(e) {
+    base$query_error <- conditionMessage(e)
+    base$nbn_match_status <- "Query uncertain"
+    base
+  })
+}
+
+taxa_to_check <- decision_rows %>%
+  transmute(
+    queried_taxon = normalise_taxon(final_taxon),
+    queried_rank = as_clean_text(final_rank)
+  ) %>%
+  filter(!is.na(queried_taxon), !is.na(queried_rank)) %>%
+  distinct() %>%
+  arrange(queried_taxon, queried_rank)
+
+nbn_key <- function(taxon, rank) {
+  paste(tolower(trimws(taxon)), tolower(trimws(rank)), sep = "||")
+}
+
+valid_nbn_cache <- is.na(nbn_cache$query_error) | !nzchar(trimws(nbn_cache$query_error))
+cached_nbn_keys <- nbn_key(
+  nbn_cache$queried_taxon[valid_nbn_cache],
+  nbn_cache$queried_rank[valid_nbn_cache]
+)
+required_nbn_keys <- nbn_key(taxa_to_check$queried_taxon, taxa_to_check$queried_rank)
+new_nbn_taxa <- taxa_to_check[!required_nbn_keys %in% cached_nbn_keys, , drop = FALSE]
+
+if (nrow(new_nbn_taxa)) {
+  retry_nbn_keys <- nbn_key(new_nbn_taxa$queried_taxon, new_nbn_taxa$queried_rank)
+  existing_nbn_keys <- nbn_key(nbn_cache$queried_taxon, nbn_cache$queried_rank)
+  nbn_cache <- nbn_cache[!existing_nbn_keys %in% retry_nbn_keys, , drop = FALSE]
+  new_nbn_rows <- map2_dfr(
+    new_nbn_taxa$queried_taxon,
+    new_nbn_taxa$queried_rank,
+    function(taxon, rank) {
+      answer <- check_nbn_common_name(taxon, rank)
+      if (nbn_pause_seconds > 0) Sys.sleep(nbn_pause_seconds)
+      answer
+    }
+  )
+  nbn_cache <- bind_rows(nbn_cache, new_nbn_rows)
+}
+
+nbn_cache <- nbn_cache %>%
+  distinct(queried_taxon, queried_rank, .keep_all = TRUE) %>%
+  arrange(queried_taxon, queried_rank)
+write.csv(
+  blank_cells_to_na(nbn_cache),
+  nbn_common_name_cache_file,
+  row.names = FALSE,
+  na = "NA"
+)
+
+decision_nbn_keys <- nbn_key(decision_rows$final_taxon, decision_rows$final_rank)
+cache_nbn_keys <- nbn_key(nbn_cache$queried_taxon, nbn_cache$queried_rank)
+nbn_common_names <- nbn_cache$british_common_name[
+  match(decision_nbn_keys, cache_nbn_keys)
+]
+use_nbn_name <- !is.na(nbn_common_names) & nzchar(trimws(nbn_common_names))
+decision_rows$common_name[use_nbn_name] <- nbn_common_names[use_nbn_name]
+
+# ------------------------------ 12. ORDER AND SAVE ----------------------------
 
 requested_columns <- c(
   "top_pident",
@@ -1061,6 +1228,7 @@ message("Curation complete.")
 message("Output: ", normalizePath(output_file, mustWork = FALSE))
 message("GBIF cache: ", normalizePath(gbif_cache_file, mustWork = FALSE))
 message("Internal reusable GBIF cache: ", normalizePath(gbif_internal_cache_file, mustWork = FALSE))
+message("NBN common-name cache: ", normalizePath(nbn_common_name_cache_file, mustWork = FALSE))
 message(
   "Manual-review ASVs: ",
   sum(result$manual_review %in% TRUE, na.rm = TRUE),
