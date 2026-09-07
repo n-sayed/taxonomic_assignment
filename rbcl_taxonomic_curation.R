@@ -688,6 +688,36 @@ curate_row <- function(i) {
   informative_genera <- unique(genus_from_species(informative_species))
   informative_genera <- informative_genera[!is.na(informative_genera)]
 
+  # Recalculate consensus after applying the GB observation threshold. Use
+  # GBIF-accepted species/genus names where available, so synonyms do not create
+  # artificial cross-genus conflicts.
+  asv_gbif_present <- top_informative_gbif[
+    top_informative_gbif$seqid == id &
+      !is.na(top_informative_gbif$occurrences_GB_observations) &
+      top_informative_gbif$occurrences_GB_observations >=
+        minimum_gbif_records,
+    , drop = FALSE
+  ]
+  present_species <- if (nrow(asv_gbif_present)) {
+    accepted <- normalise_taxon(asv_gbif_present$species)
+    accepted[is.na(accepted)] <- normalise_taxon(
+      asv_gbif_present$blast_species[is.na(accepted)]
+    )
+    unique(accepted[!is.na(accepted)])
+  } else {
+    character()
+  }
+  present_genera <- if (nrow(asv_gbif_present)) {
+    accepted <- normalise_taxon(asv_gbif_present$genus)
+    fallback <- genus_from_species(asv_gbif_present$blast_species)
+    accepted[is.na(accepted)] <- fallback[is.na(accepted)]
+    unique(accepted[!is.na(accepted)])
+  } else {
+    character()
+  }
+  decision_confidence <- NULL
+  decision_evidence_basis <- NULL
+
   if (!reliable || n_species == 0) {
     automated_rank <- basta_rank
     manual <- TRUE
@@ -735,26 +765,24 @@ curate_row <- function(i) {
     } else {
       "BLAST supports one species but conflicts with the merged LULU x BASTA lineage; flagged for manual review. GBIF support is descriptive only."
     }
-  } else if (row$number_species_present == 1) {
-    # Geographic tie-breaker: use GBIF only when exactly one of several equally
-    # best molecular matches exceeds the occurrence threshold.
-    asv_gbif <- top_informative_gbif[
-      top_informative_gbif$seqid == id &
-        !is.na(top_informative_gbif$occurrences_GB_observations) &
-        top_informative_gbif$occurrences_GB_observations >=
-          minimum_gbif_records,
-      , drop = FALSE
-    ]
-    preferred_species <- unique(asv_gbif$blast_species)
+  } else if (length(present_species) == 1) {
+    # Geographic tie-breaker: exactly one accepted species remains after the
+    # GB observation filter.
+    asv_gbif <- asv_gbif_present
+    preferred_species <- present_species
 
     if (length(preferred_species) == 1) {
       preferred_species <- preferred_species[1]
-      preferred_genus <- genus_from_species(preferred_species)
-      preferred_gbif <- gbif_cache[
-        match(preferred_species, gbif_cache$queried_name), , drop = FALSE
-      ]
+      preferred_genus <- if (length(present_genera) == 1) {
+        present_genera[1]
+      } else {
+        genus_from_species(preferred_species)
+      }
+      preferred_gbif <- asv_gbif_present
 
       automated_rank <- "Species"
+      decision_confidence <- "Moderate"
+      decision_evidence_basis <- "Geography-resolved species"
       final["Species"] <- preferred_species
       final["Genus"] <- preferred_genus
       for (r in c("kingdom", "phylum", "class", "order", "family", "genus", "species")) {
@@ -790,6 +818,39 @@ curate_row <- function(i) {
           "does not support it consistently, so manual review is required."
         )
       }
+    }
+  } else if (length(present_species) > 1 && length(present_genera) == 1) {
+    # Several species remain geographically plausible, but all share one
+    # accepted genus. This safely resolves genus, though not species.
+    preferred_genus <- present_genera[1]
+    automated_rank <- "Genus"
+    final["Genus"] <- preferred_genus
+    final["Species"] <- NA_character_
+    for (r in c("kingdom", "phylum", "class", "order", "family", "genus")) {
+      value <- taxonomy_consensus(asv_gbif_present, r)
+      if (!is.na(value)) {
+        final[taxonomy_ranks[match(r, tolower(taxonomy_ranks))]] <- value
+      }
+    }
+
+    assigned_genus_conflict <- !is.na(basta_values["Genus"]) &&
+      tolower(basta_values["Genus"]) != tolower(preferred_genus)
+    manual <- assigned_genus_conflict
+    decision_confidence <- "Moderate"
+    decision_evidence_basis <- "Geography-resolved genus"
+    reason <- if (!manual) {
+      paste0(
+        "Several species had equally best BLAST scores. After applying the GB ",
+        "observation threshold and normalising GBIF taxonomy, all plausible ",
+        "candidates belong to ", preferred_genus,
+        "; assigned genus because the marker does not resolve species."
+      )
+    } else {
+      paste0(
+        "After applying the GB observation threshold, all plausible candidates ",
+        "belong to ", preferred_genus,
+        ", but this conflicts with the assigned BASTA genus; manual review is required."
+      )
     }
   } else if (n_genera == 1) {
     automated_rank <- "Genus"
@@ -899,7 +960,9 @@ curate_row <- function(i) {
     if (length(common_match)) final_common_name <- common_match[1]
   }
 
-  confidence <- if (!reliable || n_species == 0) {
+  confidence <- if (!is.null(decision_confidence)) {
+    decision_confidence
+  } else if (!reliable || n_species == 0) {
     "Low"
   } else if (n_species == 1 && row$number_unique_accessions >= 2) {
     "Very high"
@@ -909,7 +972,9 @@ curate_row <- function(i) {
     "Low"
   }
 
-  evidence_basis <- if (!reliable || n_species == 0) {
+  evidence_basis <- if (!is.null(decision_evidence_basis)) {
+    decision_evidence_basis
+  } else if (!reliable || n_species == 0) {
     "Unresolved"
   } else if (n_species == 1 || n_genera == 1) {
     "Sequence-resolved"
