@@ -25,11 +25,11 @@ library(jsonlite)
 lulu_basta_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_lulu98_bastai98l360_merge_test.csv"
 blast_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_combined_results_test.txt"
 basta_vout_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_bastai98l360m1p70_vout.txt"
-output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation_v5.csv"
-gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache_v5.csv"
+output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation.csv"
+gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache.csv"
 
 # Optional command-line override:
-# Rscript rbcl_taxonomic_curation_v5.R \
+# Rscript rbcl_taxonomic_curation.R \
 #   basta.vout blast.tsv lulu_x_basta.csv curated.csv gbif_cache.csv
 # If no arguments are supplied, the USER SETTINGS paths above are used.
 args <- commandArgs(trailingOnly = TRUE)
@@ -334,6 +334,18 @@ vout_supports_taxon <- function(id, rank, taxon) {
   if (!nrow(rows)) return(FALSE)
   values <- normalise_taxon(rows[[rank]])
   any(!is.na(values) & tolower(values) == tolower(normalise_taxon(taxon)))
+}
+
+# Return a rank only when all informative BASTA-vout lineages that contain that
+# rank agree. This provides a GenBank-derived fallback without importing the
+# alternative rank hierarchy used by GBIF.
+vout_taxonomy_consensus <- function(id, rank) {
+  if (!rank %in% taxonomy_ranks) return(NA_character_)
+  rows <- basta_vout[basta_vout$seqid == as.character(id), , drop = FALSE]
+  if (!nrow(rows)) return(NA_character_)
+  values <- normalise_taxon(rows[[rank]])
+  values <- unique(values[!is.na(values)])
+  if (length(values) == 1) values[1] else NA_character_
 }
 
 # ------------------------------ 6. BLAST SUMMARY ------------------------------
@@ -653,18 +665,12 @@ evidence <- merged %>%
   left_join(blast_summary, by = "seqid") %>%
   left_join(gbif_summary, by = "seqid")
 
-# Obtain GBIF taxonomy for the informative best species belonging to one ASV.
+# Obtain GBIF matches for occurrence filtering and accepted-name comparison.
+# These rows must not be used to populate the final BASTA/GenBank lineage.
 gbif_rows_for_asv <- function(id) {
   species <- top_hits$blast_species[top_hits$seqid == id & top_hits$informative]
   species <- unique(species[!is.na(species)])
   gbif_cache[match(species, gbif_cache$queried_name), , drop = FALSE]
-}
-
-taxonomy_consensus <- function(rows, rank) {
-  if (is.null(rows) || !nrow(rows) || !rank %in% names(rows)) return(NA_character_)
-  values <- unique(normalise_taxon(rows[[rank]]))
-  values <- values[!is.na(values)]
-  if (length(values) == 1 && all(!is.na(normalise_taxon(rows[[rank]])))) values else NA_character_
 }
 
 # ------------------------------ 10. CURATION RULES ----------------------------
@@ -680,6 +686,14 @@ curate_row <- function(i) {
 
   gbif_tax <- gbif_rows_for_asv(id)
   final <- basta_values
+  # Preserve the merged BASTA/GenBank hierarchy. If one of its ranks is empty,
+  # fill it only from a unanimous BASTA-vout lineage, never from GBIF.
+  for (r in taxonomy_ranks) {
+    if (is.na(final[r])) {
+      value <- vout_taxonomy_consensus(id, r)
+      if (!is.na(value)) final[r] <- value
+    }
+  }
   automated_rank <- basta_rank
   manual <- FALSE
   reason <- ""
@@ -739,10 +753,6 @@ curate_row <- function(i) {
     automated_rank <- "Species"
     final["Species"] <- informative_species[1]
     final["Genus"] <- genus_from_species(informative_species[1])
-    for (r in c("kingdom", "phylum", "class", "order", "family", "genus", "species")) {
-      value <- taxonomy_consensus(gbif_tax, r)
-      if (!is.na(value)) final[taxonomy_ranks[match(r, tolower(taxonomy_ranks))]] <- value
-    }
 
     species_agrees <- !is.na(basta_values["Species"]) &&
       tolower(basta_values["Species"]) == tolower(informative_species[1])
@@ -777,7 +787,6 @@ curate_row <- function(i) {
   } else if (length(present_species) == 1) {
     # Geographic tie-breaker: exactly one accepted species remains after the
     # GB observation filter.
-    asv_gbif <- asv_gbif_present
     preferred_species <- present_species
 
     if (length(preferred_species) == 1) {
@@ -787,17 +796,11 @@ curate_row <- function(i) {
       } else {
         genus_from_species(preferred_species)
       }
-      preferred_gbif <- asv_gbif_present
-
       automated_rank <- "Species"
       decision_confidence <- "Moderate"
       decision_evidence_basis <- "Geography-resolved species"
       final["Species"] <- preferred_species
       final["Genus"] <- preferred_genus
-      for (r in c("kingdom", "phylum", "class", "order", "family", "genus", "species")) {
-        value <- taxonomy_consensus(preferred_gbif, r)
-        if (!is.na(value)) final[taxonomy_ranks[match(r, tolower(taxonomy_ranks))]] <- value
-      }
 
       vout_species_support <- vout_supports_taxon(
         id, "Species", preferred_species
@@ -835,12 +838,6 @@ curate_row <- function(i) {
     automated_rank <- "Genus"
     final["Genus"] <- preferred_genus
     final["Species"] <- NA_character_
-    for (r in c("kingdom", "phylum", "class", "order", "family", "genus")) {
-      value <- taxonomy_consensus(asv_gbif_present, r)
-      if (!is.na(value)) {
-        final[taxonomy_ranks[match(r, tolower(taxonomy_ranks))]] <- value
-      }
-    }
 
     assigned_genus_conflict <- !is.na(basta_values["Genus"]) &&
       tolower(basta_values["Genus"]) != tolower(preferred_genus)
@@ -865,10 +862,6 @@ curate_row <- function(i) {
     automated_rank <- "Genus"
     final["Genus"] <- informative_genera[1]
     final["Species"] <- NA_character_
-    for (r in c("kingdom", "phylum", "class", "order", "family", "genus")) {
-      value <- taxonomy_consensus(gbif_tax, r)
-      if (!is.na(value)) final[taxonomy_ranks[match(r, tolower(taxonomy_ranks))]] <- value
-    }
     genus_agrees <- !is.na(basta_values["Genus"]) &&
       tolower(basta_values["Genus"]) == tolower(informative_genera[1])
     vout_genus_support <- vout_supports_taxon(id, "Genus", informative_genera[1])
@@ -879,20 +872,22 @@ curate_row <- function(i) {
       "Equally best BLAST hits support one genus, but the merged LULU x BASTA assignment or BASTA vout does not support the same genus; assigned genus and flagged for review. GBIF support is descriptive only."
     }
   } else {
-    shared_family <- taxonomy_consensus(gbif_tax, "family")
-    shared_order <- taxonomy_consensus(gbif_tax, "order")
+    shared_family <- vout_taxonomy_consensus(id, "Family")
+    shared_order <- vout_taxonomy_consensus(id, "Order")
+    if (is.na(shared_family)) shared_family <- basta_values["Family"]
+    if (is.na(shared_order)) shared_order <- basta_values["Order"]
     if (!is.na(shared_family)) {
       automated_rank <- "Family"
       final["Family"] <- shared_family
       final[c("Genus", "Species")] <- NA_character_
       manual <- TRUE
-      reason <- "Equally best informative BLAST hits span multiple genera but share one GBIF family; assigned family and flagged for review."
+      reason <- "Equally best informative BLAST hits span multiple genera, while the BASTA/GenBank lineage supports one family; assigned that family and flagged for review."
     } else if (!is.na(shared_order)) {
       automated_rank <- "Order"
       final["Order"] <- shared_order
       final[c("Family", "Genus", "Species")] <- NA_character_
       manual <- TRUE
-      reason <- "Equally best informative BLAST hits span multiple families but share one GBIF order; assigned order and flagged for review."
+      reason <- "Equally best informative BLAST hits span multiple families, while the BASTA/GenBank lineage supports one order; assigned that order and flagged for review."
     } else {
       automated_rank <- basta_rank
       final <- basta_values
