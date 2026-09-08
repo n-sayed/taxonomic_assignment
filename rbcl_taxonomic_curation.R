@@ -4,7 +4,7 @@ library(tidyr) # used to tidy data
 library(stringr) # string/text processing
 library(purrr) # functional programming e.g. map
 library(rgbif) # access the GBIF database from R
-library(jsonlite)
+library(jsonlite) 
 
 # =============================================================================
 # Semi-automated rbcL taxonomic curation
@@ -177,10 +177,23 @@ lowest_assigned_rank <- function(row) {
   if (!length(assigned)) "Unassigned" else taxonomy_ranks[max(assigned)]
 }
 
+# Remove database-description prefixes that appear before an otherwise usable
+# scientific name. These records are treated exactly like ordinary named
+# GenBank records and are not separately flagged.
+remove_informative_record_prefix <- function(title) {
+  title <- trimws(as.character(title))
+  sub(
+    "^(TPA_asm:|PREDICTED:)[[:space:]]*",
+    "",
+    title,
+    ignore.case = TRUE
+  )
+}
+
 # Extract the leading taxonomic label for display. This retains placeholders
 # such as "Drimia sp." so they can be shown in top_BLAST_hits/removed_entries.
 extract_display_label <- function(title) {
-  title <- trimws(as.character(title))
+  title <- remove_informative_record_prefix(title)
   matched <- stringr::str_extract(
     title,
     "^[A-Z][A-Za-z.-]+[[:space:]]+(?:[a-z][A-Za-z0-9.-]*|sp\\.|cf\\.|aff\\.)"
@@ -192,7 +205,7 @@ extract_display_label <- function(title) {
 # Anchoring at the beginning prevents voucher text such as "Bachtell et" from
 # being mistaken for a scientific name.
 extract_species <- function(title) {
-  title <- trimws(as.character(title))
+  title <- remove_informative_record_prefix(title)
   species <- stringr::str_extract(
     title,
     "^[A-Z][a-z][A-Za-z.-]*(?:[[:space:]]+(?:x|×))?[[:space:]]+[a-z][A-Za-z.-]+"
