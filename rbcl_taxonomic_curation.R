@@ -4,7 +4,7 @@ library(tidyr) # used to tidy data
 library(stringr) # string/text processing
 library(purrr) # functional programming e.g. map
 library(rgbif) # access the GBIF database from R
-library(jsonlite) 
+library(jsonlite)
 
 # =============================================================================
 # Semi-automated rbcL taxonomic curation
@@ -25,11 +25,11 @@ library(jsonlite)
 lulu_basta_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_lulu98_bastai98l360_merge_test.csv"
 blast_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_combined_results_test.txt"
 basta_vout_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_bastai98l360m1p70_vout.txt"
-output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation.csv"
-gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache.csv"
+output_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_automated_curation_v5g.csv"
+gbif_cache_file <- "/home/ucbtns5/Scratch/rbcl/testing_tax_assign/rbcl_gbif_cache_v5g.csv"
 
 # Optional command-line override:
-# Rscript rbcl_taxonomic_curation.R \
+# Rscript rbcl_taxonomic_curation_v5g.R \
 #   basta.vout blast.tsv lulu_x_basta.csv curated.csv gbif_cache.csv
 # If no arguments are supplied, the USER SETTINGS paths above are used.
 args <- commandArgs(trailingOnly = TRUE)
@@ -65,7 +65,9 @@ minimum_gbif_records <- 100
 # if another primer run uses different naming conventions. Matching is case
 # insensitive. A count at or above control_detection_minimum is reported in
 # `notes`, but control presence does not automatically change the taxonomy.
-positive_control_pattern <- "(^|[_-])(pos|positive|posctrl|positivectrl)([_-]|$)"
+# A full stop is accepted as a boundary because R may rename duplicate sample
+# headings as POS.1, POS.2, and so on.
+positive_control_pattern <- "(^|[_.-])(pos|positive|posctrl|positivectrl)([_.-]|$)"
 negative_control_pattern <- "(pcrneg|negative|negctrl|negativectrl|ntc|blank)"
 control_detection_minimum <- 1
 
@@ -830,6 +832,10 @@ curate_row <- function(i) {
   informative_species <- informative_species[!is.na(informative_species)]
   informative_genera <- unique(genus_from_species(informative_species))
   informative_genera <- informative_genera[!is.na(informative_genera)]
+  number_informative_accessions <- n_distinct(
+    top_hits$sseqid[top_hits$seqid == id & top_hits$informative],
+    na.rm = TRUE
+  )
 
   # Recalculate consensus after applying the GB observation threshold. Use
   # GBIF-accepted species/genus names where available, so synonyms do not create
@@ -1046,7 +1052,7 @@ curate_row <- function(i) {
   } else if (n_species == 1) {
     paste0(
       "All credible optimal BLAST hits support ", informative_species[1],
-      " (", row$number_unique_accessions, " unique accession(s))."
+      " (", number_informative_accessions, " unique accession(s))."
     )
   } else if (n_genera == 1) {
     paste0(
