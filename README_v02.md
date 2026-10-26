@@ -41,20 +41,17 @@ The workflow consists of two sequential R scripts. The first integrates taxonomi
 
 ### 2.1. Workflow diagram
 
+
 ```mermaid
 flowchart TD
     A["LULU–BASTA ASV table"]
     B["BLAST results"]
     C["BASTA output (.vout)"]
 
-    D["Stage 1: Automated taxonomic curation
-    and NCBI validation"]
-
+    D["Stage 1: Automated taxonomic curation<br/>and NCBI validation"]
     E["Curated ASV taxonomy table"]
 
-    F["Stage 2: NCBI lineage completion
-    and category reconciliation"]
-
+    F["Stage 2: NCBI lineage completion<br/>and category reconciliation"]
     G["Final curated ASV taxonomy table"]
 
     H["Downstream biodiversity analyses"]
@@ -66,20 +63,23 @@ flowchart TD
     D <--> I[("GBIF / NCBI")]
     D --> E
     E --> F
-    F <--> J[("NCBI Taxonomy")]
+    F <--> J[("NCBI")]
     F --> G
     G --> H
 
     classDef input fill:#e8f0fe,stroke:#6489c8,color:#1c355e
     classDef process fill:#e6f4ea,stroke:#4e9b6d,color:#205536
     classDef output fill:#fff3d6,stroke:#c99b38,color:#684b13
-    classDef database fill:#f0e9fa,stroke:#9573c4,color:#51367d
+    classDef database fill:#f0e9fa,stroke:#9573c4,color:#51367d,font-size:11px
+    classDef downstream fill:#f2f2f2,stroke:#999999,color:#444444
 
     class A,B,C input
     class D,F process
-    class E,G,H output
+    class E,G output
     class I,J database
+    class H downstream
 ```
+
 
 ### 2.2. Execution sequence
 
