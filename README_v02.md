@@ -61,7 +61,7 @@ flowchart TD
     D <--> I[("GBIF / NCBI")]
     D --> E
     E --> F
-    F <--> J[("NCBI")]
+    F <--> J[("NCBI Taxonomy")]
     F --> G
     G --> H
 
