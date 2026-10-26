@@ -30,8 +30,6 @@ Users can adapt the workflow by configuring input and output paths, target taxon
 
 The general workflow is described in this document, while the implementation details, configuration parameters, and decision rules of each script are documented separately.
 
----
-
 
 
 
