@@ -70,7 +70,7 @@ flowchart TD
     classDef input fill:#e8f0fe,stroke:#6489c8,color:#1c355e
     classDef process fill:#e6f4ea,stroke:#4e9b6d,color:#205536
     classDef output fill:#fff3d6,stroke:#c99b38,color:#684b13
-    classDef database fill:#f0e9fa,stroke:#9573c4,color:#51367d,font-size:11px
+    classDef database fill:#f0e9fa,stroke:#9573c4,color:#51367d
     classDef downstream fill:#f2f2f2,stroke:#999999,color:#444444
 
     class A,B,C input
