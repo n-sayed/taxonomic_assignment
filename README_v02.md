@@ -89,5 +89,3 @@ flowchart TD
 4. **Use the final dataset:** the completed taxonomic table is ready for downstream biodiversity analyses, subject to any required manual review.
 
 Detailed configuration instructions and internal decision rules are provided in the documentation for each script.
-```
-
