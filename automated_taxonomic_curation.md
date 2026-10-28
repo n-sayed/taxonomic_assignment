@@ -322,6 +322,8 @@ Taxonomic information from an unrelated lineage is not automatically transferred
 
 Ranks below the final assigned rank are cleared to avoid retaining unsupported taxonomic resolution.
 
+**Suggestion:** This feature comes from the original script, which partly relies on BASTA for higher-rank lineage reconstruction. Although a separate script handles NCBI lineage completion and validation, reconstructing the lineage directly from NCBI Taxonomy using the BLAST-validated taxonomic assignments might be methodologically more consistent. Not a priority, but worth considering.
+
 **E. Fallback when BLAST resolution fails**
 
 If none of the four evaluated ranks can be resolved, the script applies a conservative fallback.
