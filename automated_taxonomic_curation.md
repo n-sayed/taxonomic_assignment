@@ -167,8 +167,8 @@ By default, both tolerances are set to zero, requiring exact ties in the corresp
 
 | Parameter | Description |
 |---|---|
-| `positive_control_pattern` | Regular expression identifying positive-control sample columns. |
-| `negative_control_pattern` | Regular expression identifying negative-control sample columns. |
+| `positive_control_pattern` | Positive-control sample columns. |
+| `negative_control_pattern` | Negative-control sample columns. |
 | `control_detection_minimum` | Minimum count required to report control detection in the ASV notes. |
 
 Control detection is recorded as supplementary information and does not automatically modify the taxonomic assignment or curation category.
