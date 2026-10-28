@@ -198,7 +198,7 @@ The diagnostic summary reports:
 - Mean, median, minimum, and maximum alignment lengths.
 - Mean, median, minimum, and maximum percentage identities.
 
-These statistics help characterize the molecular evidence and evaluate whether the configured identity and alignment-length requirements are appropriate for the marker.
+These statistics help characterize the molecular evidence and evaluate whether the configured identity and alignment-length requirements are appropriate for the marker and dataset. 
 
 #### GBIF threshold exploration
 
