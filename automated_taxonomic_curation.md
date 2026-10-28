@@ -232,7 +232,7 @@ Set:
 analysis_mode <- "curate"
 ```
 
-This mode evaluates the available taxonomic evidence for each ASV, applies automated decision rules, and produces a curated classification with supporting diagnostic and validation information.
+This mode evaluates the available taxonomic evidence for each ASV, applies automated decision rules, and produces a curated classification with supporting diagnostic and validated information.
 
 
 #### 3.4.1. Taxonomic evidence integration
