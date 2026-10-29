@@ -1,0 +1,141 @@
+"Marker","validation_status","Curation_category","ASVs"
+"16s","lineage_consistent","Green",56
+"16s","lineage_disagreement","Green",0
+"16s","lineage_inconsistent","Green",0
+"16s","Missing","Green",0
+"16s","no_verified_accession","Green",0
+"16s","rank_absent_in_ncbi","Green",0
+"16s","unassigned","Green",0
+"16s","lineage_consistent","Yellow",26
+"16s","lineage_disagreement","Yellow",0
+"16s","lineage_inconsistent","Yellow",0
+"16s","Missing","Yellow",0
+"16s","no_verified_accession","Yellow",0
+"16s","rank_absent_in_ncbi","Yellow",0
+"16s","unassigned","Yellow",0
+"16s","lineage_consistent","Red - manual review",1
+"16s","lineage_disagreement","Red - manual review",0
+"16s","lineage_inconsistent","Red - manual review",0
+"16s","Missing","Red - manual review",0
+"16s","no_verified_accession","Red - manual review",0
+"16s","rank_absent_in_ncbi","Red - manual review",0
+"16s","unassigned","Red - manual review",0
+"16s","lineage_consistent","Orange - outside target",14
+"16s","lineage_disagreement","Orange - outside target",0
+"16s","lineage_inconsistent","Orange - outside target",0
+"16s","Missing","Orange - outside target",0
+"16s","no_verified_accession","Orange - outside target",0
+"16s","rank_absent_in_ncbi","Orange - outside target",0
+"16s","unassigned","Orange - outside target",0
+"LgV1reamp","lineage_consistent","Green",24
+"LgV1reamp","lineage_disagreement","Green",0
+"LgV1reamp","lineage_inconsistent","Green",0
+"LgV1reamp","Missing","Green",0
+"LgV1reamp","no_verified_accession","Green",0
+"LgV1reamp","rank_absent_in_ncbi","Green",0
+"LgV1reamp","unassigned","Green",0
+"LgV1reamp","lineage_consistent","Yellow",29
+"LgV1reamp","lineage_disagreement","Yellow",0
+"LgV1reamp","lineage_inconsistent","Yellow",0
+"LgV1reamp","Missing","Yellow",0
+"LgV1reamp","no_verified_accession","Yellow",0
+"LgV1reamp","rank_absent_in_ncbi","Yellow",0
+"LgV1reamp","unassigned","Yellow",0
+"LgV1reamp","lineage_consistent","Red - manual review",2
+"LgV1reamp","lineage_disagreement","Red - manual review",0
+"LgV1reamp","lineage_inconsistent","Red - manual review",0
+"LgV1reamp","Missing","Red - manual review",0
+"LgV1reamp","no_verified_accession","Red - manual review",0
+"LgV1reamp","rank_absent_in_ncbi","Red - manual review",0
+"LgV1reamp","unassigned","Red - manual review",0
+"LgV1reamp","lineage_consistent","Orange - outside target",7
+"LgV1reamp","lineage_disagreement","Orange - outside target",0
+"LgV1reamp","lineage_inconsistent","Orange - outside target",0
+"LgV1reamp","Missing","Orange - outside target",0
+"LgV1reamp","no_verified_accession","Orange - outside target",0
+"LgV1reamp","rank_absent_in_ncbi","Orange - outside target",0
+"LgV1reamp","unassigned","Orange - outside target",0
+"LgV2","lineage_consistent","Green",21
+"LgV2","lineage_disagreement","Green",0
+"LgV2","lineage_inconsistent","Green",0
+"LgV2","Missing","Green",0
+"LgV2","no_verified_accession","Green",0
+"LgV2","rank_absent_in_ncbi","Green",0
+"LgV2","unassigned","Green",0
+"LgV2","lineage_consistent","Yellow",28
+"LgV2","lineage_disagreement","Yellow",0
+"LgV2","lineage_inconsistent","Yellow",0
+"LgV2","Missing","Yellow",0
+"LgV2","no_verified_accession","Yellow",0
+"LgV2","rank_absent_in_ncbi","Yellow",0
+"LgV2","unassigned","Yellow",0
+"LgV2","lineage_consistent","Red - manual review",0
+"LgV2","lineage_disagreement","Red - manual review",0
+"LgV2","lineage_inconsistent","Red - manual review",0
+"LgV2","Missing","Red - manual review",0
+"LgV2","no_verified_accession","Red - manual review",0
+"LgV2","rank_absent_in_ncbi","Red - manual review",0
+"LgV2","unassigned","Red - manual review",0
+"LgV2","lineage_consistent","Orange - outside target",20
+"LgV2","lineage_disagreement","Orange - outside target",0
+"LgV2","lineage_inconsistent","Orange - outside target",0
+"LgV2","Missing","Orange - outside target",0
+"LgV2","no_verified_accession","Orange - outside target",0
+"LgV2","rank_absent_in_ncbi","Orange - outside target",0
+"LgV2","unassigned","Orange - outside target",0
+"LgV2reamp","lineage_consistent","Green",15
+"LgV2reamp","lineage_disagreement","Green",0
+"LgV2reamp","lineage_inconsistent","Green",0
+"LgV2reamp","Missing","Green",0
+"LgV2reamp","no_verified_accession","Green",0
+"LgV2reamp","rank_absent_in_ncbi","Green",0
+"LgV2reamp","unassigned","Green",0
+"LgV2reamp","lineage_consistent","Yellow",26
+"LgV2reamp","lineage_disagreement","Yellow",0
+"LgV2reamp","lineage_inconsistent","Yellow",0
+"LgV2reamp","Missing","Yellow",0
+"LgV2reamp","no_verified_accession","Yellow",0
+"LgV2reamp","rank_absent_in_ncbi","Yellow",0
+"LgV2reamp","unassigned","Yellow",0
+"LgV2reamp","lineage_consistent","Red - manual review",0
+"LgV2reamp","lineage_disagreement","Red - manual review",0
+"LgV2reamp","lineage_inconsistent","Red - manual review",0
+"LgV2reamp","Missing","Red - manual review",0
+"LgV2reamp","no_verified_accession","Red - manual review",0
+"LgV2reamp","rank_absent_in_ncbi","Red - manual review",0
+"LgV2reamp","unassigned","Red - manual review",0
+"LgV2reamp","lineage_consistent","Orange - outside target",15
+"LgV2reamp","lineage_disagreement","Orange - outside target",0
+"LgV2reamp","lineage_inconsistent","Orange - outside target",0
+"LgV2reamp","Missing","Orange - outside target",0
+"LgV2reamp","no_verified_accession","Orange - outside target",0
+"LgV2reamp","rank_absent_in_ncbi","Orange - outside target",0
+"LgV2reamp","unassigned","Orange - outside target",0
+"ShV1reamp","lineage_consistent","Green",8
+"ShV1reamp","lineage_disagreement","Green",0
+"ShV1reamp","lineage_inconsistent","Green",0
+"ShV1reamp","Missing","Green",0
+"ShV1reamp","no_verified_accession","Green",0
+"ShV1reamp","rank_absent_in_ncbi","Green",0
+"ShV1reamp","unassigned","Green",0
+"ShV1reamp","lineage_consistent","Yellow",15
+"ShV1reamp","lineage_disagreement","Yellow",0
+"ShV1reamp","lineage_inconsistent","Yellow",0
+"ShV1reamp","Missing","Yellow",0
+"ShV1reamp","no_verified_accession","Yellow",0
+"ShV1reamp","rank_absent_in_ncbi","Yellow",0
+"ShV1reamp","unassigned","Yellow",0
+"ShV1reamp","lineage_consistent","Red - manual review",0
+"ShV1reamp","lineage_disagreement","Red - manual review",0
+"ShV1reamp","lineage_inconsistent","Red - manual review",0
+"ShV1reamp","Missing","Red - manual review",0
+"ShV1reamp","no_verified_accession","Red - manual review",0
+"ShV1reamp","rank_absent_in_ncbi","Red - manual review",0
+"ShV1reamp","unassigned","Red - manual review",0
+"ShV1reamp","lineage_consistent","Orange - outside target",2
+"ShV1reamp","lineage_disagreement","Orange - outside target",0
+"ShV1reamp","lineage_inconsistent","Orange - outside target",0
+"ShV1reamp","Missing","Orange - outside target",0
+"ShV1reamp","no_verified_accession","Orange - outside target",0
+"ShV1reamp","rank_absent_in_ncbi","Orange - outside target",0
+"ShV1reamp","unassigned","Orange - outside target",0

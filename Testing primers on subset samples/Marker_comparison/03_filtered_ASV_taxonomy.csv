@@ -1,0 +1,249 @@
+"Marker","seqid","total_reads","curation_colour","final_rank","final_taxon","validation_status","manual_review","final_kingdom","final_phylum","final_class","final_order","final_family","final_genus","final_species"
+"16s",8,231090,"Green","Species","Limonia nubeculosa","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Limoniidae","Limonia","Limonia nubeculosa"
+"16s",10,200798,"Green","Species","Ectopsocus californicus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Ectopsocidae","Ectopsocus","Ectopsocus californicus"
+"16s",15,69201,"Yellow","Genus","Entomobrya","lineage_consistent",FALSE,"Metazoa","Arthropoda","Collembola","Entomobryomorpha","Entomobryidae","Entomobrya",
+"16s",17,54905,"Green","Species","Drepanosiphum platanoidis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Drepanosiphum","Drepanosiphum platanoidis"
+"16s",26,24028,"Green","Species","Agriotes acuminatus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Elateridae","Agriotes","Agriotes acuminatus"
+"16s",28,18561,"Yellow","Species","Sitobion avenae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Sitobion","Sitobion avenae"
+"16s",32,15871,"Green","Species","Bibio marci","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Bibionidae","Bibio","Bibio marci"
+"16s",36,14616,"Green","Species","Agriotes lineatus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Elateridae","Agriotes","Agriotes lineatus"
+"16s",43,9655,"Green","Species","Aphis gossypii","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Aphis","Aphis gossypii"
+"16s",44,9551,"Green","Species","Cosmia trapezina","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Noctuidae","Cosmia","Cosmia trapezina"
+"16s",46,10533,"Yellow","Genus","Liposcelis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Liposcelididae","Liposcelis",
+"16s",56,29648,"Green","Species","Byturus aestivus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Byturidae","Byturus","Byturus aestivus"
+"16s",63,4841,"Green","Species","Cerobasis guestfalica","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Trogiidae","Cerobasis","Cerobasis guestfalica"
+"16s",66,5505,"Yellow","Species","Chlorops pumilionis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Chloropidae","Chlorops","Chlorops pumilionis"
+"16s",70,4201,"Green","Species","Carcina quercana","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Depressariidae","Carcina","Carcina quercana"
+"16s",72,4108,"Yellow","Family","Cicadellidae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Cicadellidae",,
+"16s",73,4072,"Yellow","Genus","Longitarsus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Chrysomelidae","Longitarsus",
+"16s",74,3751,"Green","Species","Adalia decempunctata","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Coccinellidae","Adalia","Adalia decempunctata"
+"16s",75,3370,"Green","Species","Operophtera brumata","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Operophtera","Operophtera brumata"
+"16s",78,3198,"Green","Species","Agrochola circellaris","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Noctuidae","Agrochola","Agrochola circellaris"
+"16s",80,2987,"Green","Species","Brassicogethes aeneus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Nitidulidae","Brassicogethes","Brassicogethes aeneus"
+"16s",85,2810,"Green","Species","Agriopis aurantiaria","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Agriopis","Agriopis aurantiaria"
+"16s",87,3711,"Green","Species","Aphis gossypii","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Aphis","Aphis gossypii"
+"16s",88,2692,"Yellow","Family","Aphididae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae",,
+"16s",94,2444,"Green","Species","Mayetiola destructor","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Cecidomyiidae","Mayetiola","Mayetiola destructor"
+"16s",103,2120,"Green","Species","Barypeithes pellucidus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae","Barypeithes","Barypeithes pellucidus"
+"16s",110,1891,"Green","Species","Dicyrtoma fusca","lineage_consistent",FALSE,"Metazoa","Arthropoda","Collembola","Symphypleona","Dicyrtomidae","Dicyrtoma","Dicyrtoma fusca"
+"16s",113,1656,"Green","Genus","Cavariella","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Cavariella",
+"16s",119,1542,"Yellow","Species","Blastobasis adustella","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Blastobasidae","Blastobasis","Blastobasis adustella"
+"16s",120,1673,"Yellow","Species","Nephrotoma quadrifaria","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Tipulidae","Nephrotoma","Nephrotoma quadrifaria"
+"16s",125,1393,"Green","Species","Stegobium paniceum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Ptinidae","Stegobium","Stegobium paniceum"
+"16s",128,1344,"Yellow","Species","Schizaphis graminum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Schizaphis","Schizaphis graminum"
+"16s",136,1202,"Yellow","Species","Tipula vernalis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Tipulidae","Tipula","Tipula vernalis"
+"16s",137,1200,"Green","Species","Orthosia cerasi","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Noctuidae","Orthosia","Orthosia cerasi"
+"16s",142,1123,"Green","Species","Isotomurus maculatus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Collembola","Entomobryomorpha","Isotomidae","Isotomurus","Isotomurus maculatus"
+"16s",152,974,"Green","Species","Culicoides scoticus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Ceratopogonidae","Culicoides","Culicoides scoticus"
+"16s",154,963,"Green","Genus","Erannis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Erannis",
+"16s",161,857,"Green","Species","Homoneura interstincta","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Lauxaniidae","Homoneura","Homoneura interstincta"
+"16s",168,761,"Green","Species","Acanthosoma haemorrhoidale","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Acanthosomatidae","Acanthosoma","Acanthosoma haemorrhoidale"
+"16s",178,1209,"Green","Species","Lasius fuliginosus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Lasius","Lasius fuliginosus"
+"16s",197,542,"Green","Species","Apis mellifera","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hymenoptera","Apidae","Apis","Apis mellifera"
+"16s",215,435,"Green","Species","Corynoptera tetrachaeta","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae","Corynoptera","Corynoptera tetrachaeta"
+"16s",218,424,"Green","Species","Dendroxena quadrimaculata","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Silphidae","Dendroxena","Dendroxena quadrimaculata"
+"16s",233,369,"Yellow","Order","Diptera","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera",,,
+"16s",256,298,"Green","Species","Psychoda alternata","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Psychodidae","Psychoda","Psychoda alternata"
+"16s",297,356,"Green","Species","Limonia nubeculosa","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Limoniidae","Limonia","Limonia nubeculosa"
+"16s",317,132,"Yellow","Family","Aphididae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae",,
+"16s",355,102,"Green","Species","Epuraea melanocephala","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Nitidulidae","Epuraea","Epuraea melanocephala"
+"16s",377,86,"Green","Species","Bourletiella arvalis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Collembola","Symphypleona","Bourletiellidae","Bourletiella","Bourletiella arvalis"
+"16s",400,73,"Green","Species","Tribolium castaneum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Tenebrionidae","Tribolium","Tribolium castaneum"
+"16s",401,73,"Yellow","Species","Philaenus spumarius","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphrophoridae","Philaenus","Philaenus spumarius"
+"16s",408,69,"Green","Species","Eriosoma lanigerum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Eriosoma","Eriosoma lanigerum"
+"16s",412,67,"Green","Species","Brevicoryne brassicae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Brevicoryne","Brevicoryne brassicae"
+"16s",423,60,"Green","Species","Corynoptera irmgardis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae","Corynoptera","Corynoptera irmgardis"
+"16s",425,59,"Yellow","Genus","Corynoptera","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae","Corynoptera",
+"16s",435,56,"Green","Species","Bradysia brevispina","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae","Bradysia","Bradysia brevispina"
+"16s",442,52,"Yellow","Genus","Oxytelus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Oxytelus",
+"16s",446,51,"Yellow","Genus","Drepanothrips","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Thysanoptera","Thripidae","Drepanothrips",
+"16s",450,49,"Green","Species","Forficula auricularia","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Dermaptera","Forficulidae","Forficula","Forficula auricularia"
+"16s",454,49,"Green","Species","Corynoptera tetrachaeta","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae","Corynoptera","Corynoptera tetrachaeta"
+"16s",483,34,"Green","Species","Agriopis marginaria","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Agriopis","Agriopis marginaria"
+"16s",488,33,"Green","Species","Heteromyza rotundicornis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Heleomyzidae","Heteromyza","Heteromyza rotundicornis"
+"16s",490,32,"Green","Species","Agriopis aurantiaria","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Agriopis","Agriopis aurantiaria"
+"16s",510,26,"Yellow","Genus","Liposcelis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Liposcelididae","Liposcelis",
+"16s",513,25,"Yellow","Genus","Sitona","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae","Sitona",
+"16s",525,39,"Yellow","Species","Macrosiphum rosae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Macrosiphum","Macrosiphum rosae"
+"16s",527,22,"Yellow","Genus","Columbicola","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Philopteridae","Columbicola",
+"16s",539,19,"Green","Species","Harpocera thoracica","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Miridae","Harpocera","Harpocera thoracica"
+"16s",543,18,"Yellow","Genus","Aphis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Aphis",
+"16s",546,18,"Yellow","Species","Macrosiphum euphorbiae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Macrosiphum","Macrosiphum euphorbiae"
+"16s",560,16,"Green","Species","Eristalis pertinax","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Syrphidae","Eristalis","Eristalis pertinax"
+"16s",561,16,"Green","Species","Eristalis pertinax","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Syrphidae","Eristalis","Eristalis pertinax"
+"16s",569,15,"Green","Species","Anaspis maculata","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Scraptiidae","Anaspis","Anaspis maculata"
+"16s",582,13,"Yellow","Family","Aphididae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae",,
+"16s",584,13,"Green","Species","Agriopis aurantiaria","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Agriopis","Agriopis aurantiaria"
+"16s",585,13,"Green","Species","Agriopis aurantiaria","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Agriopis","Agriopis aurantiaria"
+"16s",586,13,"Green","Genus","Aphis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Aphis",
+"16s",587,13,"Yellow","Family","Noctuidae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Noctuidae",,
+"16s",589,12,"Green","Species","Philonthus cognatus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Philonthus","Philonthus cognatus"
+"16s",602,11,"Green","Species","Corynoptera irmgardis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae","Corynoptera","Corynoptera irmgardis"
+"16s",609,10,"Green","Species","Sitona lineatus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae","Sitona","Sitona lineatus"
+"16s",613,10,"Yellow","Genus","Neotoxoptera","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Neotoxoptera",
+"LgV1reamp",2,238643,"Green","Species","Ectopsocus californicus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Ectopsocidae","Ectopsocus","Ectopsocus californicus"
+"LgV1reamp",4,185206,"Green","Species","Agriopis aurantiaria","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Agriopis","Agriopis aurantiaria"
+"LgV1reamp",5,225121,"Green","Species","Limonia nubeculosa","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Limoniidae","Limonia","Limonia nubeculosa"
+"LgV1reamp",7,71232,"Green","Species","Agrochola circellaris","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Noctuidae","Agrochola","Agrochola circellaris"
+"LgV1reamp",8,71821,"Green","Species","Ophyiulus pilosus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Diplopoda","Julida","Julidae","Ophyiulus","Ophyiulus pilosus"
+"LgV1reamp",9,58328,"Green","Species","Drepanosiphum platanoidis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Drepanosiphum","Drepanosiphum platanoidis"
+"LgV1reamp",10,54458,"Green","Species","Harpocera thoracica","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Miridae","Harpocera","Harpocera thoracica"
+"LgV1reamp",13,28835,"Green","Species","Operophtera brumata","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Operophtera","Operophtera brumata"
+"LgV1reamp",16,25317,"Green","Species","Apis mellifera","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hymenoptera","Apidae","Apis","Apis mellifera"
+"LgV1reamp",19,13517,"Green","Species","Periphyllus testudinaceus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Periphyllus","Periphyllus testudinaceus"
+"LgV1reamp",26,6936,"Yellow","Family","Aphididae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae",,
+"LgV1reamp",28,4954,"Yellow","Genus","Entomobrya","lineage_consistent",FALSE,"Metazoa","Arthropoda","Collembola","Entomobryomorpha","Entomobryidae","Entomobrya",
+"LgV1reamp",43,2093,"Green","Species","Orthosia cerasi","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Noctuidae","Orthosia","Orthosia cerasi"
+"LgV1reamp",50,1533,"Yellow","Species","Sitobion avenae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Sitobion","Sitobion avenae"
+"LgV1reamp",54,1438,"Green","Species","Longitarsus parvulus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Chrysomelidae","Longitarsus","Longitarsus parvulus"
+"LgV1reamp",57,1314,"Green","Genus","Erannis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Erannis",
+"LgV1reamp",107,797,"Yellow","Genus","Smittia","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Chironomidae","Smittia",
+"LgV1reamp",156,576,"Yellow","Family","Geometridae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae",,
+"LgV1reamp",186,462,"Green","Species","Graphopsocus cruciatus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Stenopsocidae","Graphopsocus","Graphopsocus cruciatus"
+"LgV1reamp",222,363,"Yellow","Family","Syrphidae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Syrphidae",,
+"LgV1reamp",224,359,"Green","Species","Agriotes lineatus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Elateridae","Agriotes","Agriotes lineatus"
+"LgV1reamp",233,338,"Yellow","Family","Geometridae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae",,
+"LgV1reamp",266,264,"Green","Species","Dicyrtoma fusca","lineage_consistent",FALSE,"Metazoa","Arthropoda","Collembola","Symphypleona","Dicyrtomidae","Dicyrtoma","Dicyrtoma fusca"
+"LgV1reamp",283,233,"Green","Genus","Stenopsocus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Stenopsocidae","Stenopsocus",
+"LgV1reamp",320,113,"Yellow","Family","Aphididae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae",,
+"LgV1reamp",326,101,"Yellow","Genus","Oxytelus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Oxytelus",
+"LgV1reamp",327,101,"Yellow","Species","Eristalis pertinax","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Syrphidae","Eristalis","Eristalis pertinax"
+"LgV1reamp",329,97,"Green","Species","Tachyporus hypnorum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Tachyporus","Tachyporus hypnorum"
+"LgV1reamp",348,55,"Green","Species","Eysarcoris venustissimus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Pentatomidae","Eysarcoris","Eysarcoris venustissimus"
+"LgV1reamp",352,47,"Yellow","Genus","Archips","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Tortricidae","Archips",
+"LgV1reamp",353,45,"Yellow","Family","Noctuidae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Noctuidae",,
+"LgV1reamp",354,45,"Green","Species","Limonia nubeculosa","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Limoniidae","Limonia","Limonia nubeculosa"
+"LgV1reamp",366,32,"Yellow","Order","Coleoptera","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera",,,
+"LgV1reamp",367,28,"Yellow","Family","Sciaridae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae",,
+"LgV1reamp",368,28,"Yellow","Family","Noctuidae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Noctuidae",,
+"LgV1reamp",371,23,"Yellow","Family","Geometridae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae",,
+"LgV1reamp",372,22,"Green","Species","Cylindroiulus punctatus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Diplopoda","Julida","Julidae","Cylindroiulus","Cylindroiulus punctatus"
+"LgV1reamp",384,16,"Green","Species","Carcina quercana","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Depressariidae","Carcina","Carcina quercana"
+"LgV1reamp",385,16,"Yellow","Family","Noctuidae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Noctuidae",,
+"LgV1reamp",388,15,"Yellow","Order","Psocodea","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea",,,
+"LgV1reamp",392,14,"Green","Species","Agriopis aurantiaria","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Agriopis","Agriopis aurantiaria"
+"LgV1reamp",395,14,"Yellow","Family","Aphididae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae",,
+"LgV1reamp",397,13,"Yellow","Family","Limoniidae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Limoniidae",,
+"LgV1reamp",399,12,"Yellow","Family","Sciaridae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae",,
+"LgV1reamp",400,12,"Yellow","Family","Limoniidae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Limoniidae",,
+"LgV1reamp",401,12,"Yellow","Family","Limoniidae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Limoniidae",,
+"LgV1reamp",404,11,"Yellow","Order","Psocodea","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea",,,
+"LgV1reamp",407,11,"Green","Species","Lasius fuliginosus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Lasius","Lasius fuliginosus"
+"LgV1reamp",409,11,"Yellow","Species","Sitobion avenae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Sitobion","Sitobion avenae"
+"LgV1reamp",412,11,"Yellow","Order","Lepidoptera","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera",,,
+"LgV1reamp",413,11,"Yellow","Family","Apidae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hymenoptera","Apidae",,
+"LgV1reamp",414,11,"Yellow","Order","Hymenoptera","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hymenoptera",,,
+"LgV1reamp",416,10,"Yellow","Family","Geometridae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae",,
+"LgV2",7,40434,"Yellow","Species","Limonia nubeculosa","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Limoniidae","Limonia","Limonia nubeculosa"
+"LgV2",8,24326,"Yellow","Species","Ectopsocus californicus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Ectopsocidae","Ectopsocus","Ectopsocus californicus"
+"LgV2",20,5151,"Yellow","Species","Agriopis aurantiaria","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Agriopis","Agriopis aurantiaria"
+"LgV2",23,3786,"Green","Species","Stegobium paniceum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Ptinidae","Stegobium","Stegobium paniceum"
+"LgV2",29,5465,"Green","Genus","Acyrthosiphon","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Acyrthosiphon",
+"LgV2",31,2729,"Yellow","Species","Ectopsocus californicus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Ectopsocidae","Ectopsocus","Ectopsocus californicus"
+"LgV2",33,2832,"Green","Species","Willowsia nigromaculata","lineage_consistent",FALSE,"Metazoa","Arthropoda","Collembola","Entomobryomorpha","Entomobryidae","Willowsia","Willowsia nigromaculata"
+"LgV2",35,3964,"Yellow","Species","Illinoia liriodendri","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Illinoia","Illinoia liriodendri"
+"LgV2",36,2544,"Yellow","Species","Coeliodes rana","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae","Coeliodes","Coeliodes rana"
+"LgV2",37,3160,"Green","Species","Longitarsus parvulus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Chrysomelidae","Longitarsus","Longitarsus parvulus"
+"LgV2",41,1945,"Green","Species","Ophyiulus pilosus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Diplopoda","Julida","Julidae","Ophyiulus","Ophyiulus pilosus"
+"LgV2",45,1712,"Yellow","Family","Latridiidae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Latridiidae",,
+"LgV2",48,7143,"Yellow","Species","Byturus aestivus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Byturidae","Byturus","Byturus aestivus"
+"LgV2",51,1436,"Yellow","Genus","Entomobrya","lineage_consistent",FALSE,"Metazoa","Arthropoda","Collembola","Entomobryomorpha","Entomobryidae","Entomobrya",
+"LgV2",56,1272,"Yellow","Species","Agriotes lineatus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Elateridae","Agriotes","Agriotes lineatus"
+"LgV2",62,1063,"Yellow","Species","Brassicogethes aeneus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Nitidulidae","Brassicogethes","Brassicogethes aeneus"
+"LgV2",66,934,"Yellow","Species","Calliopum simillimum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Lauxaniidae","Calliopum","Calliopum simillimum"
+"LgV2",68,869,"Yellow","Species","Orthosia incerta","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Noctuidae","Orthosia","Orthosia incerta"
+"LgV2",69,859,"Yellow","Genus","Stigmella","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Nepticulidae","Stigmella",
+"LgV2",75,707,"Green","Species","Leiosoma deflexum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae","Leiosoma","Leiosoma deflexum"
+"LgV2",78,684,"Green","Species","Drepanosiphum platanoidis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Drepanosiphum","Drepanosiphum platanoidis"
+"LgV2",79,660,"Yellow","Species","Acyrthosiphon caraganae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Acyrthosiphon","Acyrthosiphon caraganae"
+"LgV2",83,621,"Green","Species","Orchesella villosa","lineage_consistent",FALSE,"Metazoa","Arthropoda","Collembola","Entomobryomorpha","Orchesellidae","Orchesella","Orchesella villosa"
+"LgV2",85,596,"Yellow","Genus","Cratyna","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae","Cratyna",
+"LgV2",86,589,"Yellow","Genus","Thelaxes","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Thelaxidae","Thelaxes",
+"LgV2",90,539,"Green","Species","Harpocera thoracica","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Miridae","Harpocera","Harpocera thoracica"
+"LgV2",99,453,"Green","Species","Pogonognathellus longicornis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Collembola","Entomobryomorpha","Tomoceridae","Pogonognathellus","Pogonognathellus longicornis"
+"LgV2",108,377,"Green","Species","Operophtera brumata","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Operophtera","Operophtera brumata"
+"LgV2",110,369,"Green","Species","Sitona lineatus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae","Sitona","Sitona lineatus"
+"LgV2",111,429,"Yellow","Species","Lasius niger","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Lasius","Lasius niger"
+"LgV2",138,244,"Green","Species","Periphyllus testudinaceus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Periphyllus","Periphyllus testudinaceus"
+"LgV2",139,244,"Green","Species","Epuraea melanocephala","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Nitidulidae","Epuraea","Epuraea melanocephala"
+"LgV2",147,200,"Green","Species","Carcina quercana","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Depressariidae","Carcina","Carcina quercana"
+"LgV2",155,172,"Green","Species","Lasius fuliginosus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Lasius","Lasius fuliginosus"
+"LgV2",176,105,"Green","Species","Tachyporus hypnorum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Tachyporus","Tachyporus hypnorum"
+"LgV2",179,100,"Green","Species","Mayetiola destructor","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Cecidomyiidae","Mayetiola","Mayetiola destructor"
+"LgV2",185,75,"Yellow","Genus","Fannia","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Fanniidae","Fannia",
+"LgV2",192,56,"Yellow","Species","Melanostoma mellinum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Syrphidae","Melanostoma","Melanostoma mellinum"
+"LgV2",203,40,"Green","Species","Phyllonorycter quercifoliella","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Gracillariidae","Phyllonorycter","Phyllonorycter quercifoliella"
+"LgV2",204,39,"Green","Genus","Erannis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Erannis",
+"LgV2",220,28,"Yellow","Genus","Zeiraphera","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Tortricidae","Zeiraphera",
+"LgV2",221,27,"Yellow","Genus","Oxytelus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Oxytelus",
+"LgV2",230,22,"Yellow","Species","Lasius fuliginosus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Lasius","Lasius fuliginosus"
+"LgV2",236,19,"Yellow","Genus","Tortrix","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Tortricidae","Tortrix",
+"LgV2",237,18,"Yellow","Family","Syrphidae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Syrphidae",,
+"LgV2",246,15,"Green","Species","Barypeithes pellucidus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae","Barypeithes","Barypeithes pellucidus"
+"LgV2",247,15,"Yellow","Genus","Glocianus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae","Glocianus",
+"LgV2",262,12,"Yellow","Species","Agrochola circellaris","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Noctuidae","Agrochola","Agrochola circellaris"
+"LgV2",270,10,"Yellow","Genus","Synergus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hymenoptera","Cynipidae","Synergus",
+"LgV2reamp",8,248797,"Yellow","Species","Limonia nubeculosa","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Limoniidae","Limonia","Limonia nubeculosa"
+"LgV2reamp",12,73015,"Yellow","Species","Ectopsocus californicus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Ectopsocidae","Ectopsocus","Ectopsocus californicus"
+"LgV2reamp",14,56949,"Green","Species","Drepanosiphum platanoidis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Drepanosiphum","Drepanosiphum platanoidis"
+"LgV2reamp",16,38252,"Green","Species","Harpocera thoracica","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Miridae","Harpocera","Harpocera thoracica"
+"LgV2reamp",18,22554,"Green","Species","Bibio marci","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Bibionidae","Bibio","Bibio marci"
+"LgV2reamp",22,13205,"Yellow","Species","Agriopis aurantiaria","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Agriopis","Agriopis aurantiaria"
+"LgV2reamp",23,12745,"Green","Species","Ophyiulus pilosus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Diplopoda","Julida","Julidae","Ophyiulus","Ophyiulus pilosus"
+"LgV2reamp",27,11025,"Yellow","Species","Athous haemorrhoidalis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Elateridae","Athous","Athous haemorrhoidalis"
+"LgV2reamp",32,8355,"Yellow","Family","Aphididae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae",,
+"LgV2reamp",34,7603,"Yellow","Genus","Slavum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Slavum",
+"LgV2reamp",36,7037,"Yellow","Genus","Agonum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Agonum",
+"LgV2reamp",38,6751,"Yellow","Family","Aphididae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae",,
+"LgV2reamp",57,4403,"Yellow","Species","Macrosiphum rosae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Macrosiphum","Macrosiphum rosae"
+"LgV2reamp",193,5200,"Yellow","Species","Byturus aestivus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Byturidae","Byturus","Byturus aestivus"
+"LgV2reamp",350,585,"Green","Species","Periphyllus testudinaceus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Periphyllus","Periphyllus testudinaceus"
+"LgV2reamp",360,558,"Yellow","Genus","Philotarsus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Philotarsidae","Philotarsus",
+"LgV2reamp",376,519,"Green","Genus","Fannia","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Fanniidae","Fannia",
+"LgV2reamp",413,418,"Green","Genus","Stenopsocus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Stenopsocidae","Stenopsocus",
+"LgV2reamp",414,415,"Yellow","Species","Macrosiphum euphorbiae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Macrosiphum","Macrosiphum euphorbiae"
+"LgV2reamp",435,350,"Green","Species","Lasius fuliginosus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Lasius","Lasius fuliginosus"
+"LgV2reamp",454,307,"Yellow","Species","Brassicogethes aeneus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Nitidulidae","Brassicogethes","Brassicogethes aeneus"
+"LgV2reamp",464,290,"Yellow","Species","Harpalus rubripes","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Harpalus","Harpalus rubripes"
+"LgV2reamp",524,313,"Green","Species","Culicoides scoticus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Ceratopogonidae","Culicoides","Culicoides scoticus"
+"LgV2reamp",538,185,"Yellow","Genus","Thelaxes","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Thelaxidae","Thelaxes",
+"LgV2reamp",560,143,"Yellow","Genus","Oxytelus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Oxytelus",
+"LgV2reamp",565,136,"Yellow","Species","Hypaurotis quercus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Lycaenidae","Hypaurotis","Hypaurotis quercus"
+"LgV2reamp",572,125,"Green","Species","Longitarsus parvulus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Chrysomelidae","Longitarsus","Longitarsus parvulus"
+"LgV2reamp",589,98,"Yellow","Genus","Cratyna","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae","Cratyna",
+"LgV2reamp",597,73,"Yellow","Genus","Bradysia","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae","Bradysia",
+"LgV2reamp",604,67,"Yellow","Species","Syrphus torvus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Syrphidae","Syrphus","Syrphus torvus"
+"LgV2reamp",606,64,"Green","Species","Cylindroiulus punctatus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Diplopoda","Julida","Julidae","Cylindroiulus","Cylindroiulus punctatus"
+"LgV2reamp",611,57,"Green","Species","Epuraea melanocephala","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Nitidulidae","Epuraea","Epuraea melanocephala"
+"LgV2reamp",645,26,"Green","Species","Tachyporus hypnorum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Tachyporus","Tachyporus hypnorum"
+"LgV2reamp",653,23,"Green","Species","Orchesella cincta","lineage_consistent",FALSE,"Metazoa","Arthropoda","Collembola","Entomobryomorpha","Orchesellidae","Orchesella","Orchesella cincta"
+"LgV2reamp",660,20,"Yellow","Species","Agrochola circellaris","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Noctuidae","Agrochola","Agrochola circellaris"
+"LgV2reamp",665,19,"Yellow","Genus","Ectoedemia","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Nepticulidae","Ectoedemia",
+"LgV2reamp",678,16,"Yellow","Genus","Corynoptera","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae","Corynoptera",
+"LgV2reamp",681,15,"Yellow","Genus","Bibio","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Bibionidae","Bibio",
+"LgV2reamp",692,14,"Yellow","Species","Bradysia trivittata","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae","Bradysia","Bradysia trivittata"
+"LgV2reamp",702,12,"Yellow","Species","Dendroxena quadrimaculata","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Silphidae","Dendroxena","Dendroxena quadrimaculata"
+"LgV2reamp",706,12,"Green","Species","Harpocera thoracica","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Miridae","Harpocera","Harpocera thoracica"
+"ShV1reamp",1,459378,"Yellow","Species","Agriopis aurantiaria","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Agriopis","Agriopis aurantiaria"
+"ShV1reamp",2,518264,"Yellow","Genus","Thrips","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Thysanoptera","Thripidae","Thrips",
+"ShV1reamp",4,209173,"Yellow","Species","Eristalis pertinax","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Syrphidae","Eristalis","Eristalis pertinax"
+"ShV1reamp",7,86639,"Green","Species","Operophtera brumata","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Operophtera","Operophtera brumata"
+"ShV1reamp",13,30440,"Yellow","Genus","Byturus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Byturidae","Byturus",
+"ShV1reamp",14,11340,"Yellow","Species","Brassicogethes aeneus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Nitidulidae","Brassicogethes","Brassicogethes aeneus"
+"ShV1reamp",32,2064,"Green","Species","Barypeithes pellucidus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae","Barypeithes","Barypeithes pellucidus"
+"ShV1reamp",47,1131,"Yellow","Genus","Drepanothrips","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Thysanoptera","Thripidae","Drepanothrips",
+"ShV1reamp",50,1108,"Green","Species","Epuraea melanocephala","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Nitidulidae","Epuraea","Epuraea melanocephala"
+"ShV1reamp",54,936,"Yellow","Genus","Entomobrya","lineage_consistent",FALSE,"Metazoa","Arthropoda","Collembola","Entomobryomorpha","Entomobryidae","Entomobrya",
+"ShV1reamp",96,322,"Yellow","Species","Limonia nubeculosa","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Limoniidae","Limonia","Limonia nubeculosa"
+"ShV1reamp",116,208,"Green","Species","Tachyporus hypnorum","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Tachyporus","Tachyporus hypnorum"
+"ShV1reamp",118,202,"Yellow","Genus","Glocianus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae","Glocianus",
+"ShV1reamp",130,134,"Yellow","Genus","Ectopsocus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Ectopsocidae","Ectopsocus",
+"ShV1reamp",133,132,"Yellow","Genus","Bibio","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Bibionidae","Bibio",
+"ShV1reamp",145,105,"Yellow","Family","Curculionidae","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae",,
+"ShV1reamp",179,44,"Yellow","Genus","Corynoptera","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Diptera","Sciaridae","Corynoptera",
+"ShV1reamp",181,43,"Green","Species","Carcina quercana","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Depressariidae","Carcina","Carcina quercana"
+"ShV1reamp",199,24,"Yellow","Species","Orthosia cruda","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Noctuidae","Orthosia","Orthosia cruda"
+"ShV1reamp",203,22,"Green","Genus","Erannis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Erannis",
+"ShV1reamp",206,20,"Green","Species","Drepanosiphum platanoidis","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae","Drepanosiphum","Drepanosiphum platanoidis"
+"ShV1reamp",209,19,"Yellow","Species","Agriopis aurantiaria","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Lepidoptera","Geometridae","Agriopis","Agriopis aurantiaria"
+"ShV1reamp",213,15,"Green","Genus","Stenopsocus","lineage_consistent",FALSE,"Metazoa","Arthropoda","Insecta","Psocodea","Stenopsocidae","Stenopsocus",

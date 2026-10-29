@@ -1,0 +1,21 @@
+"Marker","Category","ASVs","Percentage"
+"16s","Green",56,57.7
+"16s","Yellow",26,26.8
+"16s","Red - manual review",1,1
+"16s","Orange - outside target",14,14.4
+"LgV1reamp","Green",24,38.7
+"LgV1reamp","Yellow",29,46.8
+"LgV1reamp","Red - manual review",2,3.2
+"LgV1reamp","Orange - outside target",7,11.3
+"LgV2","Green",21,30.4
+"LgV2","Yellow",28,40.6
+"LgV2","Red - manual review",0,0
+"LgV2","Orange - outside target",20,29
+"LgV2reamp","Green",15,26.8
+"LgV2reamp","Yellow",26,46.4
+"LgV2reamp","Red - manual review",0,0
+"LgV2reamp","Orange - outside target",15,26.8
+"ShV1reamp","Green",8,32
+"ShV1reamp","Yellow",15,60
+"ShV1reamp","Red - manual review",0,0
+"ShV1reamp","Orange - outside target",2,8

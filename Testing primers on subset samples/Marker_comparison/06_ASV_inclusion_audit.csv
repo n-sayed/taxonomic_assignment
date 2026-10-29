@@ -1,0 +1,310 @@
+"Marker","seqid","total_reads","curation_colour","inclusion_status","final_rank","final_taxon","validation_status","manual_review","outside_target_phylum"
+"16s",1,1101271,"Orange","Excluded - outside target","Species","Homo sapiens","lineage_consistent",FALSE,TRUE
+"16s",5,762819,"Orange","Excluded - outside target","Species","Canis lupus","lineage_consistent",FALSE,TRUE
+"16s",7,281739,"Orange","Excluded - outside target","Species","Canis lupus","lineage_consistent",FALSE,TRUE
+"16s",8,231090,"Green","Included","Species","Limonia nubeculosa","lineage_consistent",FALSE,FALSE
+"16s",10,200798,"Green","Included","Species","Ectopsocus californicus","lineage_consistent",FALSE,FALSE
+"16s",15,69201,"Yellow","Included","Genus","Entomobrya","lineage_consistent",FALSE,FALSE
+"16s",17,54905,"Green","Included","Species","Drepanosiphum platanoidis","lineage_consistent",FALSE,FALSE
+"16s",25,24719,"Orange","Excluded - outside target","Species","Muntiacus reevesi","lineage_consistent",FALSE,TRUE
+"16s",26,24028,"Green","Included","Species","Agriotes acuminatus","lineage_consistent",FALSE,FALSE
+"16s",28,18561,"Yellow","Included","Species","Sitobion avenae","lineage_consistent",FALSE,FALSE
+"16s",32,15871,"Green","Included","Species","Bibio marci","lineage_consistent",FALSE,FALSE
+"16s",36,14616,"Green","Included","Species","Agriotes lineatus","lineage_consistent",FALSE,FALSE
+"16s",43,9655,"Green","Included","Species","Aphis gossypii","lineage_consistent",FALSE,FALSE
+"16s",44,9551,"Green","Included","Species","Cosmia trapezina","lineage_consistent",FALSE,FALSE
+"16s",46,10533,"Yellow","Included","Genus","Liposcelis","lineage_consistent",FALSE,FALSE
+"16s",56,29648,"Green","Included","Species","Byturus aestivus","lineage_consistent",FALSE,FALSE
+"16s",63,4841,"Green","Included","Species","Cerobasis guestfalica","lineage_consistent",FALSE,FALSE
+"16s",66,5505,"Yellow","Included","Species","Chlorops pumilionis","lineage_consistent",FALSE,FALSE
+"16s",70,4201,"Green","Included","Species","Carcina quercana","lineage_consistent",FALSE,FALSE
+"16s",72,4108,"Yellow","Included","Family","Cicadellidae","lineage_consistent",FALSE,FALSE
+"16s",73,4072,"Yellow","Included","Genus","Longitarsus","lineage_consistent",FALSE,FALSE
+"16s",74,3751,"Green","Included","Species","Adalia decempunctata","lineage_consistent",FALSE,FALSE
+"16s",75,3370,"Green","Included","Species","Operophtera brumata","lineage_consistent",FALSE,FALSE
+"16s",78,3198,"Green","Included","Species","Agrochola circellaris","lineage_consistent",FALSE,FALSE
+"16s",80,2987,"Green","Included","Species","Brassicogethes aeneus","lineage_consistent",FALSE,FALSE
+"16s",85,2810,"Green","Included","Species","Agriopis aurantiaria","lineage_consistent",FALSE,FALSE
+"16s",87,3711,"Green","Included","Species","Aphis gossypii","lineage_consistent",FALSE,FALSE
+"16s",88,2692,"Yellow","Included","Family","Aphididae","lineage_consistent",FALSE,FALSE
+"16s",94,2444,"Green","Included","Species","Mayetiola destructor","lineage_consistent",FALSE,FALSE
+"16s",95,2576,"Orange","Excluded - outside target","Species","Sciurus carolinensis","lineage_consistent",FALSE,TRUE
+"16s",102,2241,"Orange","Excluded - outside target","Species","Ovis aries","lineage_consistent",FALSE,TRUE
+"16s",103,2120,"Green","Included","Species","Barypeithes pellucidus","lineage_consistent",FALSE,FALSE
+"16s",110,1891,"Green","Included","Species","Dicyrtoma fusca","lineage_consistent",FALSE,FALSE
+"16s",113,1656,"Green","Included","Genus","Cavariella","lineage_consistent",FALSE,FALSE
+"16s",119,1542,"Yellow","Included","Species","Blastobasis adustella","lineage_consistent",FALSE,FALSE
+"16s",120,1673,"Yellow","Included","Species","Nephrotoma quadrifaria","lineage_consistent",FALSE,FALSE
+"16s",125,1393,"Green","Included","Species","Stegobium paniceum","lineage_consistent",FALSE,FALSE
+"16s",128,1344,"Yellow","Included","Species","Schizaphis graminum","lineage_consistent",FALSE,FALSE
+"16s",136,1202,"Yellow","Included","Species","Tipula vernalis","lineage_consistent",FALSE,FALSE
+"16s",137,1200,"Green","Included","Species","Orthosia cerasi","lineage_consistent",FALSE,FALSE
+"16s",142,1123,"Green","Included","Species","Isotomurus maculatus","lineage_consistent",FALSE,FALSE
+"16s",152,974,"Green","Included","Species","Culicoides scoticus","lineage_consistent",FALSE,FALSE
+"16s",154,963,"Green","Included","Genus","Erannis","lineage_consistent",FALSE,FALSE
+"16s",161,857,"Green","Included","Species","Homoneura interstincta","lineage_consistent",FALSE,FALSE
+"16s",168,761,"Green","Included","Species","Acanthosoma haemorrhoidale","lineage_consistent",FALSE,FALSE
+"16s",178,1209,"Green","Included","Species","Lasius fuliginosus","lineage_consistent",FALSE,FALSE
+"16s",179,676,"Orange","Excluded - outside target","Genus","Quercus","lineage_consistent",FALSE,TRUE
+"16s",197,542,"Green","Included","Species","Apis mellifera","lineage_consistent",FALSE,FALSE
+"16s",215,435,"Green","Included","Species","Corynoptera tetrachaeta","lineage_consistent",FALSE,FALSE
+"16s",218,424,"Green","Included","Species","Dendroxena quadrimaculata","lineage_consistent",FALSE,FALSE
+"16s",233,369,"Yellow","Included","Order","Diptera","lineage_consistent",FALSE,FALSE
+"16s",256,298,"Green","Included","Species","Psychoda alternata","lineage_consistent",FALSE,FALSE
+"16s",297,356,"Green","Included","Species","Limonia nubeculosa","lineage_consistent",FALSE,FALSE
+"16s",317,132,"Yellow","Included","Family","Aphididae","lineage_consistent",FALSE,FALSE
+"16s",328,126,"Orange","Excluded - outside target","Family","Bovidae","lineage_consistent",FALSE,TRUE
+"16s",334,124,"Orange","Excluded - outside target","Species","Canis lupus","lineage_consistent",FALSE,TRUE
+"16s",355,102,"Green","Included","Species","Epuraea melanocephala","lineage_consistent",FALSE,FALSE
+"16s",377,86,"Green","Included","Species","Bourletiella arvalis","lineage_consistent",FALSE,FALSE
+"16s",394,78,"Orange","Excluded - outside target","Species","Myodes glareolus","lineage_consistent",FALSE,TRUE
+"16s",400,73,"Green","Included","Species","Tribolium castaneum","lineage_consistent",FALSE,FALSE
+"16s",401,73,"Yellow","Included","Species","Philaenus spumarius","lineage_consistent",FALSE,FALSE
+"16s",408,69,"Green","Included","Species","Eriosoma lanigerum","lineage_consistent",FALSE,FALSE
+"16s",412,67,"Green","Included","Species","Brevicoryne brassicae","lineage_consistent",FALSE,FALSE
+"16s",423,60,"Green","Included","Species","Corynoptera irmgardis","lineage_consistent",FALSE,FALSE
+"16s",425,59,"Yellow","Included","Genus","Corynoptera","lineage_consistent",FALSE,FALSE
+"16s",435,56,"Green","Included","Species","Bradysia brevispina","lineage_consistent",FALSE,FALSE
+"16s",442,52,"Yellow","Included","Genus","Oxytelus","lineage_consistent",FALSE,FALSE
+"16s",446,51,"Yellow","Included","Genus","Drepanothrips","lineage_consistent",FALSE,FALSE
+"16s",450,49,"Green","Included","Species","Forficula auricularia","lineage_consistent",FALSE,FALSE
+"16s",454,49,"Green","Included","Species","Corynoptera tetrachaeta","lineage_consistent",FALSE,FALSE
+"16s",483,34,"Green","Included","Species","Agriopis marginaria","lineage_consistent",FALSE,FALSE
+"16s",488,33,"Green","Included","Species","Heteromyza rotundicornis","lineage_consistent",FALSE,FALSE
+"16s",490,32,"Green","Included","Species","Agriopis aurantiaria","lineage_consistent",FALSE,FALSE
+"16s",504,28,"Orange","Excluded - outside target","Species","Sus scrofa","lineage_consistent",FALSE,TRUE
+"16s",510,26,"Yellow","Included","Genus","Liposcelis","lineage_consistent",FALSE,FALSE
+"16s",513,25,"Yellow","Included","Genus","Sitona","lineage_consistent",FALSE,FALSE
+"16s",525,39,"Yellow","Included","Species","Macrosiphum rosae","lineage_consistent",FALSE,FALSE
+"16s",527,22,"Yellow","Included","Genus","Columbicola","lineage_consistent",FALSE,FALSE
+"16s",534,20,"Orange","Excluded - outside target","Species","Cyanistes caeruleus","lineage_consistent",FALSE,TRUE
+"16s",539,19,"Green","Included","Species","Harpocera thoracica","lineage_consistent",FALSE,FALSE
+"16s",541,18,"Red","Excluded - manual review","Genus","Ectopsocus","lineage_consistent",TRUE,FALSE
+"16s",543,18,"Yellow","Included","Genus","Aphis","lineage_consistent",FALSE,FALSE
+"16s",546,18,"Yellow","Included","Species","Macrosiphum euphorbiae","lineage_consistent",FALSE,FALSE
+"16s",560,16,"Green","Included","Species","Eristalis pertinax","lineage_consistent",FALSE,FALSE
+"16s",561,16,"Green","Included","Species","Eristalis pertinax","lineage_consistent",FALSE,FALSE
+"16s",563,16,"Orange","Excluded - outside target","Family","Canidae","lineage_consistent",FALSE,TRUE
+"16s",569,15,"Green","Included","Species","Anaspis maculata","lineage_consistent",FALSE,FALSE
+"16s",582,13,"Yellow","Included","Family","Aphididae","lineage_consistent",FALSE,FALSE
+"16s",584,13,"Green","Included","Species","Agriopis aurantiaria","lineage_consistent",FALSE,FALSE
+"16s",585,13,"Green","Included","Species","Agriopis aurantiaria","lineage_consistent",FALSE,FALSE
+"16s",586,13,"Green","Included","Genus","Aphis","lineage_consistent",FALSE,FALSE
+"16s",587,13,"Yellow","Included","Family","Noctuidae","lineage_consistent",FALSE,FALSE
+"16s",588,12,"Orange","Excluded - outside target","Species","Vulpes vulpes","lineage_consistent",FALSE,TRUE
+"16s",589,12,"Green","Included","Species","Philonthus cognatus","lineage_consistent",FALSE,FALSE
+"16s",602,11,"Green","Included","Species","Corynoptera irmgardis","lineage_consistent",FALSE,FALSE
+"16s",609,10,"Green","Included","Species","Sitona lineatus","lineage_consistent",FALSE,FALSE
+"16s",613,10,"Yellow","Included","Genus","Neotoxoptera","lineage_consistent",FALSE,FALSE
+"LgV1reamp",2,238643,"Green","Included","Species","Ectopsocus californicus","lineage_consistent",FALSE,FALSE
+"LgV1reamp",4,185206,"Green","Included","Species","Agriopis aurantiaria","lineage_consistent",FALSE,FALSE
+"LgV1reamp",5,225121,"Green","Included","Species","Limonia nubeculosa","lineage_consistent",FALSE,FALSE
+"LgV1reamp",7,71232,"Green","Included","Species","Agrochola circellaris","lineage_consistent",FALSE,FALSE
+"LgV1reamp",8,71821,"Green","Included","Species","Ophyiulus pilosus","lineage_consistent",FALSE,FALSE
+"LgV1reamp",9,58328,"Green","Included","Species","Drepanosiphum platanoidis","lineage_consistent",FALSE,FALSE
+"LgV1reamp",10,54458,"Green","Included","Species","Harpocera thoracica","lineage_consistent",FALSE,FALSE
+"LgV1reamp",13,28835,"Green","Included","Species","Operophtera brumata","lineage_consistent",FALSE,FALSE
+"LgV1reamp",16,25317,"Green","Included","Species","Apis mellifera","lineage_consistent",FALSE,FALSE
+"LgV1reamp",19,13517,"Green","Included","Species","Periphyllus testudinaceus","lineage_consistent",FALSE,FALSE
+"LgV1reamp",26,6936,"Yellow","Included","Family","Aphididae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",28,4954,"Yellow","Included","Genus","Entomobrya","lineage_consistent",FALSE,FALSE
+"LgV1reamp",43,2093,"Green","Included","Species","Orthosia cerasi","lineage_consistent",FALSE,FALSE
+"LgV1reamp",50,1533,"Yellow","Included","Species","Sitobion avenae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",54,1438,"Green","Included","Species","Longitarsus parvulus","lineage_consistent",FALSE,FALSE
+"LgV1reamp",57,1314,"Green","Included","Genus","Erannis","lineage_consistent",FALSE,FALSE
+"LgV1reamp",107,797,"Yellow","Included","Genus","Smittia","lineage_consistent",FALSE,FALSE
+"LgV1reamp",156,576,"Yellow","Included","Family","Geometridae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",186,462,"Green","Included","Species","Graphopsocus cruciatus","lineage_consistent",FALSE,FALSE
+"LgV1reamp",222,363,"Yellow","Included","Family","Syrphidae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",224,359,"Green","Included","Species","Agriotes lineatus","lineage_consistent",FALSE,FALSE
+"LgV1reamp",233,338,"Yellow","Included","Family","Geometridae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",240,325,"Orange","Excluded - outside target","Species","Canis lupus","lineage_consistent",FALSE,TRUE
+"LgV1reamp",266,264,"Green","Included","Species","Dicyrtoma fusca","lineage_consistent",FALSE,FALSE
+"LgV1reamp",283,233,"Green","Included","Genus","Stenopsocus","lineage_consistent",FALSE,FALSE
+"LgV1reamp",320,113,"Yellow","Included","Family","Aphididae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",325,104,"Orange","Excluded - outside target","Genus","Homo","lineage_consistent",FALSE,TRUE
+"LgV1reamp",326,101,"Yellow","Included","Genus","Oxytelus","lineage_consistent",FALSE,FALSE
+"LgV1reamp",327,101,"Yellow","Included","Species","Eristalis pertinax","lineage_consistent",FALSE,FALSE
+"LgV1reamp",329,97,"Green","Included","Species","Tachyporus hypnorum","lineage_consistent",FALSE,FALSE
+"LgV1reamp",330,94,"Orange","Excluded - outside target","Genus","Homo","lineage_consistent",FALSE,TRUE
+"LgV1reamp",338,77,"Red","Excluded - manual review","Genus","Byturus","lineage_consistent",TRUE,FALSE
+"LgV1reamp",342,64,"Orange","Excluded - outside target","Species","Homo sapiens","lineage_consistent",FALSE,TRUE
+"LgV1reamp",346,59,"Orange","Excluded - outside target","Genus","Homo","lineage_consistent",FALSE,TRUE
+"LgV1reamp",348,55,"Green","Included","Species","Eysarcoris venustissimus","lineage_consistent",FALSE,FALSE
+"LgV1reamp",352,47,"Yellow","Included","Genus","Archips","lineage_consistent",FALSE,FALSE
+"LgV1reamp",353,45,"Yellow","Included","Family","Noctuidae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",354,45,"Green","Included","Species","Limonia nubeculosa","lineage_consistent",FALSE,FALSE
+"LgV1reamp",355,44,"Orange","Excluded - outside target","Genus","Homo","lineage_consistent",FALSE,TRUE
+"LgV1reamp",357,40,"Orange","Excluded - outside target","Species","Canis lupus","lineage_consistent",FALSE,TRUE
+"LgV1reamp",366,32,"Yellow","Included","Order","Coleoptera","lineage_consistent",FALSE,FALSE
+"LgV1reamp",367,28,"Yellow","Included","Family","Sciaridae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",368,28,"Yellow","Included","Family","Noctuidae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",371,23,"Yellow","Included","Family","Geometridae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",372,22,"Green","Included","Species","Cylindroiulus punctatus","lineage_consistent",FALSE,FALSE
+"LgV1reamp",382,17,"Red","Excluded - manual review","Genus","Byturus","lineage_consistent",TRUE,FALSE
+"LgV1reamp",384,16,"Green","Included","Species","Carcina quercana","lineage_consistent",FALSE,FALSE
+"LgV1reamp",385,16,"Yellow","Included","Family","Noctuidae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",388,15,"Yellow","Included","Order","Psocodea","lineage_consistent",FALSE,FALSE
+"LgV1reamp",392,14,"Green","Included","Species","Agriopis aurantiaria","lineage_consistent",FALSE,FALSE
+"LgV1reamp",395,14,"Yellow","Included","Family","Aphididae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",397,13,"Yellow","Included","Family","Limoniidae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",399,12,"Yellow","Included","Family","Sciaridae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",400,12,"Yellow","Included","Family","Limoniidae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",401,12,"Yellow","Included","Family","Limoniidae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",404,11,"Yellow","Included","Order","Psocodea","lineage_consistent",FALSE,FALSE
+"LgV1reamp",407,11,"Green","Included","Species","Lasius fuliginosus","lineage_consistent",FALSE,FALSE
+"LgV1reamp",409,11,"Yellow","Included","Species","Sitobion avenae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",412,11,"Yellow","Included","Order","Lepidoptera","lineage_consistent",FALSE,FALSE
+"LgV1reamp",413,11,"Yellow","Included","Family","Apidae","lineage_consistent",FALSE,FALSE
+"LgV1reamp",414,11,"Yellow","Included","Order","Hymenoptera","lineage_consistent",FALSE,FALSE
+"LgV1reamp",416,10,"Yellow","Included","Family","Geometridae","lineage_consistent",FALSE,FALSE
+"LgV2",4,283466,"Orange","Excluded - outside target","Species","Canis lupus","lineage_consistent",FALSE,TRUE
+"LgV2",5,90273,"Orange","Excluded - outside target","Species","Homo sapiens","lineage_consistent",FALSE,TRUE
+"LgV2",7,40434,"Yellow","Included","Species","Limonia nubeculosa","lineage_consistent",FALSE,FALSE
+"LgV2",8,24326,"Yellow","Included","Species","Ectopsocus californicus","lineage_consistent",FALSE,FALSE
+"LgV2",10,8679,"Orange","Excluded - outside target","Species","Erithacus rubecula","lineage_consistent",FALSE,TRUE
+"LgV2",11,7825,"Orange","Excluded - outside target","Family","Bovidae","lineage_consistent",FALSE,TRUE
+"LgV2",12,7974,"Orange","Excluded - outside target","Species","Oryctolagus cuniculus","lineage_consistent",FALSE,TRUE
+"LgV2",20,5151,"Yellow","Included","Species","Agriopis aurantiaria","lineage_consistent",FALSE,FALSE
+"LgV2",23,3786,"Green","Included","Species","Stegobium paniceum","lineage_consistent",FALSE,FALSE
+"LgV2",24,3987,"Orange","Excluded - outside target","Species","Muntiacus reevesi","lineage_consistent",FALSE,TRUE
+"LgV2",29,5465,"Green","Included","Genus","Acyrthosiphon","lineage_consistent",FALSE,FALSE
+"LgV2",31,2729,"Yellow","Included","Species","Ectopsocus californicus","lineage_consistent",FALSE,FALSE
+"LgV2",32,2673,"Orange","Excluded - outside target","Species","Parus major","lineage_consistent",FALSE,TRUE
+"LgV2",33,2832,"Green","Included","Species","Willowsia nigromaculata","lineage_consistent",FALSE,FALSE
+"LgV2",35,3964,"Yellow","Included","Species","Illinoia liriodendri","lineage_consistent",FALSE,FALSE
+"LgV2",36,2544,"Yellow","Included","Species","Coeliodes rana","lineage_consistent",FALSE,FALSE
+"LgV2",37,3160,"Green","Included","Species","Longitarsus parvulus","lineage_consistent",FALSE,FALSE
+"LgV2",41,1945,"Green","Included","Species","Ophyiulus pilosus","lineage_consistent",FALSE,FALSE
+"LgV2",45,1712,"Yellow","Included","Family","Latridiidae","lineage_consistent",FALSE,FALSE
+"LgV2",48,7143,"Yellow","Included","Species","Byturus aestivus","lineage_consistent",FALSE,FALSE
+"LgV2",51,1436,"Yellow","Included","Genus","Entomobrya","lineage_consistent",FALSE,FALSE
+"LgV2",53,1733,"Orange","Excluded - outside target","Species","Sciurus carolinensis","lineage_consistent",FALSE,TRUE
+"LgV2",56,1272,"Yellow","Included","Species","Agriotes lineatus","lineage_consistent",FALSE,FALSE
+"LgV2",62,1063,"Yellow","Included","Species","Brassicogethes aeneus","lineage_consistent",FALSE,FALSE
+"LgV2",63,1048,"Orange","Excluded - outside target","Species","Homo sapiens","lineage_consistent",FALSE,TRUE
+"LgV2",65,969,"Orange","Excluded - outside target","Genus","Arion","lineage_consistent",FALSE,TRUE
+"LgV2",66,934,"Yellow","Included","Species","Calliopum simillimum","lineage_consistent",FALSE,FALSE
+"LgV2",68,869,"Yellow","Included","Species","Orthosia incerta","lineage_consistent",FALSE,FALSE
+"LgV2",69,859,"Yellow","Included","Genus","Stigmella","lineage_consistent",FALSE,FALSE
+"LgV2",70,824,"Orange","Excluded - outside target","Species","Homo sapiens","lineage_consistent",FALSE,TRUE
+"LgV2",71,821,"Orange","Excluded - outside target","Species","Homo sapiens","lineage_consistent",FALSE,TRUE
+"LgV2",75,707,"Green","Included","Species","Leiosoma deflexum","lineage_consistent",FALSE,FALSE
+"LgV2",78,684,"Green","Included","Species","Drepanosiphum platanoidis","lineage_consistent",FALSE,FALSE
+"LgV2",79,660,"Yellow","Included","Species","Acyrthosiphon caraganae","lineage_consistent",FALSE,FALSE
+"LgV2",83,621,"Green","Included","Species","Orchesella villosa","lineage_consistent",FALSE,FALSE
+"LgV2",85,596,"Yellow","Included","Genus","Cratyna","lineage_consistent",FALSE,FALSE
+"LgV2",86,589,"Yellow","Included","Genus","Thelaxes","lineage_consistent",FALSE,FALSE
+"LgV2",90,539,"Green","Included","Species","Harpocera thoracica","lineage_consistent",FALSE,FALSE
+"LgV2",99,453,"Green","Included","Species","Pogonognathellus longicornis","lineage_consistent",FALSE,FALSE
+"LgV2",108,377,"Green","Included","Species","Operophtera brumata","lineage_consistent",FALSE,FALSE
+"LgV2",110,369,"Green","Included","Species","Sitona lineatus","lineage_consistent",FALSE,FALSE
+"LgV2",111,429,"Yellow","Included","Species","Lasius niger","lineage_consistent",FALSE,FALSE
+"LgV2",112,356,"Orange","Excluded - outside target","Species","Homo sapiens","lineage_consistent",FALSE,TRUE
+"LgV2",125,306,"Orange","Excluded - outside target","Genus","Homo","lineage_consistent",FALSE,TRUE
+"LgV2",138,244,"Green","Included","Species","Periphyllus testudinaceus","lineage_consistent",FALSE,FALSE
+"LgV2",139,244,"Green","Included","Species","Epuraea melanocephala","lineage_consistent",FALSE,FALSE
+"LgV2",146,205,"Orange","Excluded - outside target","Species","Oryctolagus cuniculus","lineage_consistent",FALSE,TRUE
+"LgV2",147,200,"Green","Included","Species","Carcina quercana","lineage_consistent",FALSE,FALSE
+"LgV2",155,172,"Green","Included","Species","Lasius fuliginosus","lineage_consistent",FALSE,FALSE
+"LgV2",171,115,"Orange","Excluded - outside target","Species","Canis lupus","lineage_consistent",FALSE,TRUE
+"LgV2",176,105,"Green","Included","Species","Tachyporus hypnorum","lineage_consistent",FALSE,FALSE
+"LgV2",179,100,"Green","Included","Species","Mayetiola destructor","lineage_consistent",FALSE,FALSE
+"LgV2",185,75,"Yellow","Included","Genus","Fannia","lineage_consistent",FALSE,FALSE
+"LgV2",192,56,"Yellow","Included","Species","Melanostoma mellinum","lineage_consistent",FALSE,FALSE
+"LgV2",203,40,"Green","Included","Species","Phyllonorycter quercifoliella","lineage_consistent",FALSE,FALSE
+"LgV2",204,39,"Green","Included","Genus","Erannis","lineage_consistent",FALSE,FALSE
+"LgV2",210,36,"Orange","Excluded - outside target","Species","Myodes glareolus","lineage_consistent",FALSE,TRUE
+"LgV2",213,34,"Orange","Excluded - outside target","Species","Gallus gallus","lineage_consistent",FALSE,TRUE
+"LgV2",220,28,"Yellow","Included","Genus","Zeiraphera","lineage_consistent",FALSE,FALSE
+"LgV2",221,27,"Yellow","Included","Genus","Oxytelus","lineage_consistent",FALSE,FALSE
+"LgV2",227,25,"Orange","Excluded - outside target","Genus","Prunella","lineage_consistent",FALSE,TRUE
+"LgV2",228,24,"Orange","Excluded - outside target","Species","Garrulus glandarius","lineage_consistent",FALSE,TRUE
+"LgV2",230,22,"Yellow","Included","Species","Lasius fuliginosus","lineage_consistent",FALSE,FALSE
+"LgV2",236,19,"Yellow","Included","Genus","Tortrix","lineage_consistent",FALSE,FALSE
+"LgV2",237,18,"Yellow","Included","Family","Syrphidae","lineage_consistent",FALSE,FALSE
+"LgV2",246,15,"Green","Included","Species","Barypeithes pellucidus","lineage_consistent",FALSE,FALSE
+"LgV2",247,15,"Yellow","Included","Genus","Glocianus","lineage_consistent",FALSE,FALSE
+"LgV2",262,12,"Yellow","Included","Species","Agrochola circellaris","lineage_consistent",FALSE,FALSE
+"LgV2",270,10,"Yellow","Included","Genus","Synergus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",2,994821,"Orange","Excluded - outside target","Species","Canis lupus","lineage_consistent",FALSE,TRUE
+"LgV2reamp",4,487091,"Orange","Excluded - outside target","Species","Canis lupus","lineage_consistent",FALSE,TRUE
+"LgV2reamp",5,451312,"Orange","Excluded - outside target","Species","Homo sapiens","lineage_consistent",FALSE,TRUE
+"LgV2reamp",8,248797,"Yellow","Included","Species","Limonia nubeculosa","lineage_consistent",FALSE,FALSE
+"LgV2reamp",12,73015,"Yellow","Included","Species","Ectopsocus californicus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",13,76875,"Orange","Excluded - outside target","Genus","Sciurus","lineage_consistent",FALSE,TRUE
+"LgV2reamp",14,56949,"Green","Included","Species","Drepanosiphum platanoidis","lineage_consistent",FALSE,FALSE
+"LgV2reamp",15,48177,"Orange","Excluded - outside target","Species","Myodes glareolus","lineage_consistent",FALSE,TRUE
+"LgV2reamp",16,38252,"Green","Included","Species","Harpocera thoracica","lineage_consistent",FALSE,FALSE
+"LgV2reamp",18,22554,"Green","Included","Species","Bibio marci","lineage_consistent",FALSE,FALSE
+"LgV2reamp",19,18547,"Orange","Excluded - outside target","Species","Homo sapiens","lineage_consistent",FALSE,TRUE
+"LgV2reamp",21,14383,"Orange","Excluded - outside target","Species","Muntiacus reevesi","lineage_consistent",FALSE,TRUE
+"LgV2reamp",22,13205,"Yellow","Included","Species","Agriopis aurantiaria","lineage_consistent",FALSE,FALSE
+"LgV2reamp",23,12745,"Green","Included","Species","Ophyiulus pilosus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",24,26530,"Orange","Excluded - outside target","Genus","Muntiacus","lineage_consistent",FALSE,TRUE
+"LgV2reamp",27,11025,"Yellow","Included","Species","Athous haemorrhoidalis","lineage_consistent",FALSE,FALSE
+"LgV2reamp",32,8355,"Yellow","Included","Family","Aphididae","lineage_consistent",FALSE,FALSE
+"LgV2reamp",34,7603,"Yellow","Included","Genus","Slavum","lineage_consistent",FALSE,FALSE
+"LgV2reamp",36,7037,"Yellow","Included","Genus","Agonum","lineage_consistent",FALSE,FALSE
+"LgV2reamp",38,6751,"Yellow","Included","Family","Aphididae","lineage_consistent",FALSE,FALSE
+"LgV2reamp",46,7441,"Orange","Excluded - outside target","Species","Cyanistes caeruleus","lineage_consistent",FALSE,TRUE
+"LgV2reamp",56,4163,"Orange","Excluded - outside target","Species","Sciurus carolinensis","lineage_consistent",FALSE,TRUE
+"LgV2reamp",57,4403,"Yellow","Included","Species","Macrosiphum rosae","lineage_consistent",FALSE,FALSE
+"LgV2reamp",79,3263,"Orange","Excluded - outside target","Species","Erithacus rubecula","lineage_consistent",FALSE,TRUE
+"LgV2reamp",85,2743,"Orange","Excluded - outside target","Species","Parus major","lineage_consistent",FALSE,TRUE
+"LgV2reamp",193,5200,"Yellow","Included","Species","Byturus aestivus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",197,1271,"Orange","Excluded - outside target","Species","Erithacus rubecula","lineage_consistent",FALSE,TRUE
+"LgV2reamp",350,585,"Green","Included","Species","Periphyllus testudinaceus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",360,558,"Yellow","Included","Genus","Philotarsus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",376,519,"Green","Included","Genus","Fannia","lineage_consistent",FALSE,FALSE
+"LgV2reamp",413,418,"Green","Included","Genus","Stenopsocus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",414,415,"Yellow","Included","Species","Macrosiphum euphorbiae","lineage_consistent",FALSE,FALSE
+"LgV2reamp",435,350,"Green","Included","Species","Lasius fuliginosus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",454,307,"Yellow","Included","Species","Brassicogethes aeneus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",464,290,"Yellow","Included","Species","Harpalus rubripes","lineage_consistent",FALSE,FALSE
+"LgV2reamp",524,313,"Green","Included","Species","Culicoides scoticus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",538,185,"Yellow","Included","Genus","Thelaxes","lineage_consistent",FALSE,FALSE
+"LgV2reamp",560,143,"Yellow","Included","Genus","Oxytelus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",565,136,"Yellow","Included","Species","Hypaurotis quercus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",572,125,"Green","Included","Species","Longitarsus parvulus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",580,116,"Orange","Excluded - outside target","Species","Aureobasidium pullulans","lineage_consistent",FALSE,TRUE
+"LgV2reamp",589,98,"Yellow","Included","Genus","Cratyna","lineage_consistent",FALSE,FALSE
+"LgV2reamp",597,73,"Yellow","Included","Genus","Bradysia","lineage_consistent",FALSE,FALSE
+"LgV2reamp",604,67,"Yellow","Included","Species","Syrphus torvus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",606,64,"Green","Included","Species","Cylindroiulus punctatus","lineage_consistent",FALSE,FALSE
+"LgV2reamp",611,57,"Green","Included","Species","Epuraea melanocephala","lineage_consistent",FALSE,FALSE
+"LgV2reamp",645,26,"Green","Included","Species","Tachyporus hypnorum","lineage_consistent",FALSE,FALSE
+"LgV2reamp",653,23,"Green","Included","Species","Orchesella cincta","lineage_consistent",FALSE,FALSE
+"LgV2reamp",660,20,"Yellow","Included","Species","Agrochola circellaris","lineage_consistent",FALSE,FALSE
+"LgV2reamp",661,20,"Orange","Excluded - outside target","Genus","Canis","lineage_consistent",FALSE,TRUE
+"LgV2reamp",665,19,"Yellow","Included","Genus","Ectoedemia","lineage_consistent",FALSE,FALSE
+"LgV2reamp",678,16,"Yellow","Included","Genus","Corynoptera","lineage_consistent",FALSE,FALSE
+"LgV2reamp",681,15,"Yellow","Included","Genus","Bibio","lineage_consistent",FALSE,FALSE
+"LgV2reamp",692,14,"Yellow","Included","Species","Bradysia trivittata","lineage_consistent",FALSE,FALSE
+"LgV2reamp",702,12,"Yellow","Included","Species","Dendroxena quadrimaculata","lineage_consistent",FALSE,FALSE
+"LgV2reamp",706,12,"Green","Included","Species","Harpocera thoracica","lineage_consistent",FALSE,FALSE
+"ShV1reamp",1,459378,"Yellow","Included","Species","Agriopis aurantiaria","lineage_consistent",FALSE,FALSE
+"ShV1reamp",2,518264,"Yellow","Included","Genus","Thrips","lineage_consistent",FALSE,FALSE
+"ShV1reamp",4,209173,"Yellow","Included","Species","Eristalis pertinax","lineage_consistent",FALSE,FALSE
+"ShV1reamp",7,86639,"Green","Included","Species","Operophtera brumata","lineage_consistent",FALSE,FALSE
+"ShV1reamp",13,30440,"Yellow","Included","Genus","Byturus","lineage_consistent",FALSE,FALSE
+"ShV1reamp",14,11340,"Yellow","Included","Species","Brassicogethes aeneus","lineage_consistent",FALSE,FALSE
+"ShV1reamp",32,2064,"Green","Included","Species","Barypeithes pellucidus","lineage_consistent",FALSE,FALSE
+"ShV1reamp",47,1131,"Yellow","Included","Genus","Drepanothrips","lineage_consistent",FALSE,FALSE
+"ShV1reamp",50,1108,"Green","Included","Species","Epuraea melanocephala","lineage_consistent",FALSE,FALSE
+"ShV1reamp",54,936,"Yellow","Included","Genus","Entomobrya","lineage_consistent",FALSE,FALSE
+"ShV1reamp",70,546,"Orange","Excluded - outside target","Species","Homo sapiens","lineage_consistent",FALSE,TRUE
+"ShV1reamp",96,322,"Yellow","Included","Species","Limonia nubeculosa","lineage_consistent",FALSE,FALSE
+"ShV1reamp",116,208,"Green","Included","Species","Tachyporus hypnorum","lineage_consistent",FALSE,FALSE
+"ShV1reamp",118,202,"Yellow","Included","Genus","Glocianus","lineage_consistent",FALSE,FALSE
+"ShV1reamp",128,142,"Orange","Excluded - outside target","Species","Canis lupus","lineage_consistent",FALSE,TRUE
+"ShV1reamp",130,134,"Yellow","Included","Genus","Ectopsocus","lineage_consistent",FALSE,FALSE
+"ShV1reamp",133,132,"Yellow","Included","Genus","Bibio","lineage_consistent",FALSE,FALSE
+"ShV1reamp",145,105,"Yellow","Included","Family","Curculionidae","lineage_consistent",FALSE,FALSE
+"ShV1reamp",179,44,"Yellow","Included","Genus","Corynoptera","lineage_consistent",FALSE,FALSE
+"ShV1reamp",181,43,"Green","Included","Species","Carcina quercana","lineage_consistent",FALSE,FALSE
+"ShV1reamp",199,24,"Yellow","Included","Species","Orthosia cruda","lineage_consistent",FALSE,FALSE
+"ShV1reamp",203,22,"Green","Included","Genus","Erannis","lineage_consistent",FALSE,FALSE
+"ShV1reamp",206,20,"Green","Included","Species","Drepanosiphum platanoidis","lineage_consistent",FALSE,FALSE
+"ShV1reamp",209,19,"Yellow","Included","Species","Agriopis aurantiaria","lineage_consistent",FALSE,FALSE
+"ShV1reamp",213,15,"Green","Included","Genus","Stenopsocus","lineage_consistent",FALSE,FALSE
