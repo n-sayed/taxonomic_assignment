@@ -398,11 +398,15 @@ The outcome is recorded in `validation_status`.
 | `no_verified_accession` | No NCBI-verified BLAST accession is available for the ASV. |
 | `unassigned` | No valid final taxonomic assignment is available for evaluation. |
 
+Note: Lineage validation considers all NCBI-verified BLAST accessions matching the final taxon at its assigned rank, rather than a single accession. A lineage is considered consistent if at least one of these references is compatible with all populated final taxonomic ranks.
+
 Validation evaluates taxonomic consistency, not the biological accuracy of the molecular identification itself.
 
 The procedure does not modify the selected final assignment.
 
 `validation_status` is independent of `curation_colour` and should not be treated as an additional curation category or automatic exclusion criterion.
+
+**Suggestion:** The final lineage consistency audit in Script 1 partially overlaps with the NCBI lineage completion and validation performed in Script 2. Consider consolidating these checks in Script 2 to avoid redundancy, while retaining BLAST accession validation in Script 1. Not a priority, but worth reviewing later.
 
 ### 3.5. Output files
 
