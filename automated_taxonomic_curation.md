@@ -266,6 +266,8 @@ Candidates are grouped by taxon, retaining the strongest alignment for each dist
 
 The leading candidate is evaluated against competing taxa using the rank-specific identity and alignment margins.
 
+BLAST records containing uncertain species labels (e.g., *Genus sp.*, *Genus cf. species*, or *Genus aff. species*) are not treated as confirmed species-level evidence. However, their valid genus information is retained for evaluation at higher taxonomic ranks.
+
 The decision follows three general cases:
 
 1. **Clear molecular advantage:** a candidate is accepted when its alignment evidence sufficiently distinguishes it from competitors.
@@ -567,6 +569,8 @@ The script does not automatically promote Red or Yellow assignments to Green.
 A previously Orange assignment is not automatically promoted if the final phylum is missing or changes.
 
 The previous curation category is preserved in `curation_colour_before_ncbi`, allowing changes introduced during lineage completion to be traced.
+
+**Question for future review:** Should taxonomic conflicts detected during NCBI lineage validation in Script 2 automatically trigger Red status and manual review, while preserving Orange priority for out-of-target taxa?
 
 ### 4.7. Output files
 
